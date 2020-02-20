@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "noImplicitAny": false,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "lib": ["esnext"],
+    "strict": true
+  },
+  "include": ["src/**/*"]
+}
