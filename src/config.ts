@@ -1,4 +1,4 @@
 export default {
-  txSecretID: "AKIDkJiv5zXRv51lpliZJp3IJVRecO2WwCZl",
-  txSecretKey: "nETS8jurWCmgutiYBqZypbqxylUfqBM3",
+  txSecretID: "AKID3vY3MQkn7C5nMjwkNluqY6TcXCcopfLq",
+  txSecretKey: "QbXDesrgJhqrdBWcZJo33sRq01pNfiYt",
 }
