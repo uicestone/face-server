@@ -42,12 +42,25 @@ enum AwareLevels {
   BLUE GREEN YELLOW RED
 }
 
+enum Directions {
+  IN OUT
+}
+
 model Resident {
   id        String      @id
   level     AwareLevels
   name      String
   age       String
   unit      Unit
+  community Community
+}
+
+model PassRecord {
+  id        String     @default(cuid()) @id
+  resident  Resident
+  date      DateTime
+  direction Directions
+  allow     Boolean
   community Community
 }
 
