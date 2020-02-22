@@ -293,7 +293,7 @@ export interface NexusGenInputs {
   ResidentCreateInput: { // input type
     age: string; // String!
     community: NexusGenInputs['CommunityCreateOneWithoutResidentsInput']; // CommunityCreateOneWithoutResidentsInput!
-    id?: string | null; // String
+    id: string; // String!
     level: NexusGenEnums['AwareLevels']; // AwareLevels!
     name: string; // String!
     unit: NexusGenInputs['UnitCreateOneWithoutResidentsInput']; // UnitCreateOneWithoutResidentsInput!
@@ -308,7 +308,7 @@ export interface NexusGenInputs {
   }
   ResidentCreateWithoutCommunityInput: { // input type
     age: string; // String!
-    id?: string | null; // String
+    id: string; // String!
     level: NexusGenEnums['AwareLevels']; // AwareLevels!
     name: string; // String!
     unit: NexusGenInputs['UnitCreateOneWithoutResidentsInput']; // UnitCreateOneWithoutResidentsInput!
@@ -316,7 +316,7 @@ export interface NexusGenInputs {
   ResidentCreateWithoutUnitInput: { // input type
     age: string; // String!
     community: NexusGenInputs['CommunityCreateOneWithoutResidentsInput']; // CommunityCreateOneWithoutResidentsInput!
-    id?: string | null; // String
+    id: string; // String!
     level: NexusGenEnums['AwareLevels']; // AwareLevels!
     name: string; // String!
   }
@@ -908,6 +908,7 @@ export interface NexusGenFieldTypes {
     updateOneResident: NexusGenRootTypes['Resident'] | null; // Resident
     updateOneUnit: NexusGenRootTypes['Unit'] | null; // Unit
     updateOneUser: NexusGenRootTypes['User'] | null; // User
+    upsertOneCommunity: NexusGenRootTypes['Community']; // Community!
     upsertOnePost: NexusGenRootTypes['Post']; // Post!
     upsertOneResident: NexusGenRootTypes['Resident']; // Resident!
     upsertOneUnit: NexusGenRootTypes['Unit']; // Unit!
@@ -960,22 +961,22 @@ export interface NexusGenFieldTypes {
 export interface NexusGenArgTypes {
   Community: {
     residents: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['ResidentWhereUniqueInput'] | null; // ResidentWhereUniqueInput
+      before?: NexusGenInputs['ResidentWhereUniqueInput'] | null; // ResidentWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int
     }
     units: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['UnitWhereUniqueInput'] | null; // UnitWhereUniqueInput
+      before?: NexusGenInputs['UnitWhereUniqueInput'] | null; // UnitWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int
     }
     users: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int
@@ -1076,6 +1077,11 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
+    upsertOneCommunity: { // args
+      create: NexusGenInputs['CommunityCreateInput']; // CommunityCreateInput!
+      update: NexusGenInputs['CommunityUpdateInput']; // CommunityUpdateInput!
+      where: NexusGenInputs['CommunityWhereUniqueInput']; // CommunityWhereUniqueInput!
+    }
     upsertOnePost: { // args
       create: NexusGenInputs['PostCreateInput']; // PostCreateInput!
       update: NexusGenInputs['PostUpdateInput']; // PostUpdateInput!
@@ -1099,8 +1105,8 @@ export interface NexusGenArgTypes {
   }
   Query: {
     communities: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['CommunityWhereUniqueInput'] | null; // CommunityWhereUniqueInput
+      before?: NexusGenInputs['CommunityWhereUniqueInput'] | null; // CommunityWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       orderBy?: NexusGenInputs['CommunityOrderByInput'] | null; // CommunityOrderByInput
@@ -1114,8 +1120,8 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
     }
     posts: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
+      before?: NexusGenInputs['PostWhereUniqueInput'] | null; // PostWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       orderBy?: NexusGenInputs['PostOrderByInput'] | null; // PostOrderByInput
@@ -1126,8 +1132,8 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['ResidentWhereUniqueInput']; // ResidentWhereUniqueInput!
     }
     residents: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['ResidentWhereUniqueInput'] | null; // ResidentWhereUniqueInput
+      before?: NexusGenInputs['ResidentWhereUniqueInput'] | null; // ResidentWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       orderBy?: NexusGenInputs['ResidentOrderByInput'] | null; // ResidentOrderByInput
@@ -1138,8 +1144,8 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['UnitWhereUniqueInput']; // UnitWhereUniqueInput!
     }
     units: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['UnitWhereUniqueInput'] | null; // UnitWhereUniqueInput
+      before?: NexusGenInputs['UnitWhereUniqueInput'] | null; // UnitWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       orderBy?: NexusGenInputs['UnitOrderByInput'] | null; // UnitOrderByInput
@@ -1150,8 +1156,8 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
     users: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
+      before?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       orderBy?: NexusGenInputs['UserOrderByInput'] | null; // UserOrderByInput
@@ -1161,8 +1167,8 @@ export interface NexusGenArgTypes {
   }
   Unit: {
     residents: { // args
-      after?: string | null; // String
-      before?: string | null; // String
+      after?: NexusGenInputs['ResidentWhereUniqueInput'] | null; // ResidentWhereUniqueInput
+      before?: NexusGenInputs['ResidentWhereUniqueInput'] | null; // ResidentWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int

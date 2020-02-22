@@ -29,7 +29,7 @@ server.express
       console.log(result)
       res.json(result)
     } catch (error) {
-      res.json(error)
+      throw new Error(error)
     }
   })
   .post("/tx/SearchPersons", async (req, res) => {
@@ -39,22 +39,39 @@ server.express
       console.log(result)
       res.json(result)
     } catch (error) {
-      res.json(error)
+      throw new Error(error)
     }
   })
   .post("/tx/CreatePerson", async (req, res) => {
-    const { Image, Gender, PersonId = uuid.v4(), PersonName } = req.body
+    const { Image, Gender, PersonId = uuid.v4(), PersonName, PersonLevel, PersonAge, UnidId, CommunityId } = req.body
     try {
       const result = await txIaiService.CreatePerson({ Image, Gender, PersonId, PersonName })
-      console.log(result)
+      const resident = await prisma.resident.upsert({
+        where: {
+          id: PersonId
+        },
+        update: {},
+        create: {
+          id: PersonId,
+          level: PersonLevel,
+          name: PersonName,
+          age: PersonAge,
+          unit: {
+            connect: UnidId
+          },
+          community: {
+            connect: CommunityId
+          }
+        }
+      })
       if (result.FaceId) {
         const img = Image.split(",")[1]
         await fs.promises.writeFile(process.cwd() + `/static/${result.FaceId}.png`, img, { encoding: "base64" })
       }
 
-      res.json(result)
+      res.json({ resident, person: result })
     } catch (error) {
-      res.json(error)
+      throw new Error(error)
     }
   })
   .use("/static", express.static("static"))

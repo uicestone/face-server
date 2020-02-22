@@ -27,9 +27,9 @@ type Community {
   address: String!
   id: String!
   name: String!
-  residents(after: String, before: String, first: Int, last: Int, skip: Int): [Resident!]!
-  units(after: String, before: String, first: Int, last: Int, skip: Int): [Unit!]!
-  users(after: String, before: String, first: Int, last: Int, skip: Int): [User!]!
+  residents(after: ResidentWhereUniqueInput, before: ResidentWhereUniqueInput, first: Int, last: Int, skip: Int): [Resident!]!
+  units(after: UnitWhereUniqueInput, before: UnitWhereUniqueInput, first: Int, last: Int, skip: Int): [Unit!]!
+  users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int, skip: Int): [User!]!
 }
 
 input CommunityCreateInput {
@@ -220,6 +220,7 @@ type Mutation {
   updateOneResident(data: ResidentUpdateInput!, where: ResidentWhereUniqueInput!): Resident
   updateOneUnit(data: UnitUpdateInput!, where: UnitWhereUniqueInput!): Unit
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  upsertOneCommunity(create: CommunityCreateInput!, update: CommunityUpdateInput!, where: CommunityWhereUniqueInput!): Community!
   upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
   upsertOneResident(create: ResidentCreateInput!, update: ResidentUpdateInput!, where: ResidentWhereUniqueInput!): Resident!
   upsertOneUnit(create: UnitCreateInput!, update: UnitUpdateInput!, where: UnitWhereUniqueInput!): Unit!
@@ -389,16 +390,16 @@ input PostWhereUniqueInput {
 }
 
 type Query {
-  communities(after: String, before: String, first: Int, last: Int, orderBy: CommunityOrderByInput, skip: Int, where: CommunityWhereInput): [Community!]!
+  communities(after: CommunityWhereUniqueInput, before: CommunityWhereUniqueInput, first: Int, last: Int, orderBy: CommunityOrderByInput, skip: Int, where: CommunityWhereInput): [Community!]!
   community(where: CommunityWhereUniqueInput!): Community
   post(where: PostWhereUniqueInput!): Post
-  posts(after: String, before: String, first: Int, last: Int, orderBy: PostOrderByInput, skip: Int, where: PostWhereInput): [Post!]!
+  posts(after: PostWhereUniqueInput, before: PostWhereUniqueInput, first: Int, last: Int, orderBy: PostOrderByInput, skip: Int, where: PostWhereInput): [Post!]!
   resident(where: ResidentWhereUniqueInput!): Resident
-  residents(after: String, before: String, first: Int, last: Int, orderBy: ResidentOrderByInput, skip: Int, where: ResidentWhereInput): [Resident!]!
+  residents(after: ResidentWhereUniqueInput, before: ResidentWhereUniqueInput, first: Int, last: Int, orderBy: ResidentOrderByInput, skip: Int, where: ResidentWhereInput): [Resident!]!
   unit(where: UnitWhereUniqueInput!): Unit
-  units(after: String, before: String, first: Int, last: Int, orderBy: UnitOrderByInput, skip: Int, where: UnitWhereInput): [Unit!]!
+  units(after: UnitWhereUniqueInput, before: UnitWhereUniqueInput, first: Int, last: Int, orderBy: UnitOrderByInput, skip: Int, where: UnitWhereInput): [Unit!]!
   user(where: UserWhereUniqueInput!): User
-  users(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]!
+  users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]!
 }
 
 type Resident {
@@ -413,7 +414,7 @@ type Resident {
 input ResidentCreateInput {
   age: String!
   community: CommunityCreateOneWithoutResidentsInput!
-  id: String
+  id: String!
   level: AwareLevels!
   name: String!
   unit: UnitCreateOneWithoutResidentsInput!
@@ -431,7 +432,7 @@ input ResidentCreateManyWithoutUnitInput {
 
 input ResidentCreateWithoutCommunityInput {
   age: String!
-  id: String
+  id: String!
   level: AwareLevels!
   name: String!
   unit: UnitCreateOneWithoutResidentsInput!
@@ -440,7 +441,7 @@ input ResidentCreateWithoutCommunityInput {
 input ResidentCreateWithoutUnitInput {
   age: String!
   community: CommunityCreateOneWithoutResidentsInput!
-  id: String
+  id: String!
   level: AwareLevels!
   name: String!
 }
@@ -591,7 +592,7 @@ input StringFilter {
 type Unit {
   building: String!
   id: String!
-  residents(after: String, before: String, first: Int, last: Int, skip: Int): [Resident!]!
+  residents(after: ResidentWhereUniqueInput, before: ResidentWhereUniqueInput, first: Int, last: Int, skip: Int): [Resident!]!
   room: String!
 }
 
