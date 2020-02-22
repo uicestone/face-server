@@ -7,6 +7,13 @@ type AuthPayload {
   user: User!
 }
 
+enum AwareLevels {
+  BLUE
+  GREEN
+  RED
+  YELLOW
+}
+
 type BatchPayload {
   count: Int!
 }
@@ -14,6 +21,162 @@ type BatchPayload {
 input BooleanFilter {
   equals: Boolean
   not: Boolean
+}
+
+type Community {
+  address: String!
+  id: String!
+  name: String!
+  residents(after: String, before: String, first: Int, last: Int, skip: Int): [Resident!]!
+  units(after: String, before: String, first: Int, last: Int, skip: Int): [Unit!]!
+  users(after: String, before: String, first: Int, last: Int, skip: Int): [User!]!
+}
+
+input CommunityCreateInput {
+  address: String!
+  id: String
+  name: String!
+  residents: ResidentCreateManyWithoutCommunityInput
+  units: UnitCreateManyWithoutCommunityInput
+  users: UserCreateManyWithoutPlotInput
+}
+
+input CommunityCreateOneWithoutResidentsInput {
+  connect: CommunityWhereUniqueInput
+  create: CommunityCreateWithoutResidentsInput
+}
+
+input CommunityCreateOneWithoutUnitsInput {
+  connect: CommunityWhereUniqueInput
+  create: CommunityCreateWithoutUnitsInput
+}
+
+input CommunityCreateOneWithoutUsersInput {
+  connect: CommunityWhereUniqueInput
+  create: CommunityCreateWithoutUsersInput
+}
+
+input CommunityCreateWithoutResidentsInput {
+  address: String!
+  id: String
+  name: String!
+  units: UnitCreateManyWithoutCommunityInput
+  users: UserCreateManyWithoutPlotInput
+}
+
+input CommunityCreateWithoutUnitsInput {
+  address: String!
+  id: String
+  name: String!
+  residents: ResidentCreateManyWithoutCommunityInput
+  users: UserCreateManyWithoutPlotInput
+}
+
+input CommunityCreateWithoutUsersInput {
+  address: String!
+  id: String
+  name: String!
+  residents: ResidentCreateManyWithoutCommunityInput
+  units: UnitCreateManyWithoutCommunityInput
+}
+
+input CommunityOrderByInput {
+  address: OrderByArg
+  id: OrderByArg
+  name: OrderByArg
+}
+
+input CommunityUpdateInput {
+  address: String
+  id: String
+  name: String
+  residents: ResidentUpdateManyWithoutCommunityInput
+  units: UnitUpdateManyWithoutCommunityInput
+  users: UserUpdateManyWithoutPlotInput
+}
+
+input CommunityUpdateManyMutationInput {
+  address: String
+  id: String
+  name: String
+}
+
+input CommunityUpdateOneRequiredWithoutResidentsInput {
+  connect: CommunityWhereUniqueInput
+  create: CommunityCreateWithoutResidentsInput
+  update: CommunityUpdateWithoutResidentsDataInput
+  upsert: CommunityUpsertWithoutResidentsInput
+}
+
+input CommunityUpdateOneRequiredWithoutUnitsInput {
+  connect: CommunityWhereUniqueInput
+  create: CommunityCreateWithoutUnitsInput
+  update: CommunityUpdateWithoutUnitsDataInput
+  upsert: CommunityUpsertWithoutUnitsInput
+}
+
+input CommunityUpdateOneWithoutUsersInput {
+  connect: CommunityWhereUniqueInput
+  create: CommunityCreateWithoutUsersInput
+  delete: Boolean
+  disconnect: Boolean
+  update: CommunityUpdateWithoutUsersDataInput
+  upsert: CommunityUpsertWithoutUsersInput
+}
+
+input CommunityUpdateWithoutResidentsDataInput {
+  address: String
+  id: String
+  name: String
+  units: UnitUpdateManyWithoutCommunityInput
+  users: UserUpdateManyWithoutPlotInput
+}
+
+input CommunityUpdateWithoutUnitsDataInput {
+  address: String
+  id: String
+  name: String
+  residents: ResidentUpdateManyWithoutCommunityInput
+  users: UserUpdateManyWithoutPlotInput
+}
+
+input CommunityUpdateWithoutUsersDataInput {
+  address: String
+  id: String
+  name: String
+  residents: ResidentUpdateManyWithoutCommunityInput
+  units: UnitUpdateManyWithoutCommunityInput
+}
+
+input CommunityUpsertWithoutResidentsInput {
+  create: CommunityCreateWithoutResidentsInput!
+  update: CommunityUpdateWithoutResidentsDataInput!
+}
+
+input CommunityUpsertWithoutUnitsInput {
+  create: CommunityCreateWithoutUnitsInput!
+  update: CommunityUpdateWithoutUnitsDataInput!
+}
+
+input CommunityUpsertWithoutUsersInput {
+  create: CommunityCreateWithoutUsersInput!
+  update: CommunityUpdateWithoutUsersDataInput!
+}
+
+input CommunityWhereInput {
+  address: StringFilter
+  AND: [CommunityWhereInput!]
+  id: StringFilter
+  name: StringFilter
+  NOT: [CommunityWhereInput!]
+  OR: [CommunityWhereInput!]
+  residents: ResidentFilter
+  units: UnitFilter
+  users: UserFilter
+}
+
+input CommunityWhereUniqueInput {
+  id: String
 }
 
 scalar DateTime
@@ -30,17 +193,32 @@ input DateTimeFilter {
 }
 
 type Mutation {
+  createOneCommunity(data: CommunityCreateInput!): Community!
   createOnePost(data: PostCreateInput!): Post!
+  createOneResident(data: ResidentCreateInput!): Resident!
+  createOneUnit(data: UnitCreateInput!): Unit!
   createOneUser(data: UserCreateInput!): User!
+  deleteManyCommunity(where: CommunityWhereInput): BatchPayload!
   deleteManyPost(where: PostWhereInput): BatchPayload!
+  deleteManyResident(where: ResidentWhereInput): BatchPayload!
+  deleteManyUnit(where: UnitWhereInput): BatchPayload!
   deleteManyUser(where: UserWhereInput): BatchPayload!
+  deleteOneCommunity(where: CommunityWhereUniqueInput!): Community
   deleteOnePost(where: PostWhereUniqueInput!): Post
+  deleteOneResident(where: ResidentWhereUniqueInput!): Resident
+  deleteOneUnit(where: UnitWhereUniqueInput!): Unit
   deleteOneUser(where: UserWhereUniqueInput!): User
-  login(email: String!, password: String!): AuthPayload!
-  signup(email: String!, name: String, password: String!): AuthPayload!
+  login(login: String!, password: String!): AuthPayload!
+  signup(login: String!, name: String, password: String!): AuthPayload!
+  updateManyCommunity(data: CommunityUpdateManyMutationInput!, where: CommunityWhereInput): BatchPayload!
   updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
+  updateManyResident(data: ResidentUpdateManyMutationInput!, where: ResidentWhereInput): BatchPayload!
+  updateManyUnit(data: UnitUpdateManyMutationInput!, where: UnitWhereInput): BatchPayload!
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
+  updateOneCommunity(data: CommunityUpdateInput!, where: CommunityWhereUniqueInput!): Community
   updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  updateOneResident(data: ResidentUpdateInput!, where: ResidentWhereUniqueInput!): Resident
+  updateOneUnit(data: UnitUpdateInput!, where: UnitWhereUniqueInput!): Unit
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
 }
 
@@ -207,10 +385,189 @@ input PostWhereUniqueInput {
 }
 
 type Query {
+  communities(after: String, before: String, first: Int, last: Int, orderBy: CommunityOrderByInput, skip: Int, where: CommunityWhereInput): [Community!]!
+  community(where: CommunityWhereUniqueInput!): Community
   post(where: PostWhereUniqueInput!): Post
   posts(after: String, before: String, first: Int, last: Int, orderBy: PostOrderByInput, skip: Int, where: PostWhereInput): [Post!]!
+  resident(where: ResidentWhereUniqueInput!): Resident
+  residents(after: String, before: String, first: Int, last: Int, orderBy: ResidentOrderByInput, skip: Int, where: ResidentWhereInput): [Resident!]!
+  unit(where: UnitWhereUniqueInput!): Unit
+  units(after: String, before: String, first: Int, last: Int, orderBy: UnitOrderByInput, skip: Int, where: UnitWhereInput): [Unit!]!
   user(where: UserWhereUniqueInput!): User
   users(after: String, before: String, first: Int, last: Int, orderBy: UserOrderByInput, skip: Int, where: UserWhereInput): [User!]!
+}
+
+type Resident {
+  age: String!
+  community: Community!
+  id: String!
+  level: AwareLevels!
+  name: String!
+  unit: Unit!
+}
+
+input ResidentCreateInput {
+  age: String!
+  community: CommunityCreateOneWithoutResidentsInput!
+  id: String
+  level: AwareLevels!
+  name: String!
+  unit: UnitCreateOneWithoutResidentsInput!
+}
+
+input ResidentCreateManyWithoutCommunityInput {
+  connect: [ResidentWhereUniqueInput!]
+  create: [ResidentCreateWithoutCommunityInput!]
+}
+
+input ResidentCreateManyWithoutUnitInput {
+  connect: [ResidentWhereUniqueInput!]
+  create: [ResidentCreateWithoutUnitInput!]
+}
+
+input ResidentCreateWithoutCommunityInput {
+  age: String!
+  id: String
+  level: AwareLevels!
+  name: String!
+  unit: UnitCreateOneWithoutResidentsInput!
+}
+
+input ResidentCreateWithoutUnitInput {
+  age: String!
+  community: CommunityCreateOneWithoutResidentsInput!
+  id: String
+  level: AwareLevels!
+  name: String!
+}
+
+input ResidentFilter {
+  every: ResidentWhereInput
+  none: ResidentWhereInput
+  some: ResidentWhereInput
+}
+
+input ResidentOrderByInput {
+  age: OrderByArg
+  id: OrderByArg
+  level: OrderByArg
+  name: OrderByArg
+}
+
+input ResidentScalarWhereInput {
+  age: StringFilter
+  AND: [ResidentScalarWhereInput!]
+  id: StringFilter
+  level: AwareLevels
+  name: StringFilter
+  NOT: [ResidentScalarWhereInput!]
+  OR: [ResidentScalarWhereInput!]
+}
+
+input ResidentUpdateInput {
+  age: String
+  community: CommunityUpdateOneRequiredWithoutResidentsInput
+  id: String
+  level: AwareLevels
+  name: String
+  unit: UnitUpdateOneRequiredWithoutResidentsInput
+}
+
+input ResidentUpdateManyDataInput {
+  age: String
+  id: String
+  level: AwareLevels
+  name: String
+}
+
+input ResidentUpdateManyMutationInput {
+  age: String
+  id: String
+  level: AwareLevels
+  name: String
+}
+
+input ResidentUpdateManyWithoutCommunityInput {
+  connect: [ResidentWhereUniqueInput!]
+  create: [ResidentCreateWithoutCommunityInput!]
+  delete: [ResidentWhereUniqueInput!]
+  deleteMany: [ResidentScalarWhereInput!]
+  disconnect: [ResidentWhereUniqueInput!]
+  set: [ResidentWhereUniqueInput!]
+  update: [ResidentUpdateWithWhereUniqueWithoutCommunityInput!]
+  updateMany: [ResidentUpdateManyWithWhereNestedInput!]
+  upsert: [ResidentUpsertWithWhereUniqueWithoutCommunityInput!]
+}
+
+input ResidentUpdateManyWithoutUnitInput {
+  connect: [ResidentWhereUniqueInput!]
+  create: [ResidentCreateWithoutUnitInput!]
+  delete: [ResidentWhereUniqueInput!]
+  deleteMany: [ResidentScalarWhereInput!]
+  disconnect: [ResidentWhereUniqueInput!]
+  set: [ResidentWhereUniqueInput!]
+  update: [ResidentUpdateWithWhereUniqueWithoutUnitInput!]
+  updateMany: [ResidentUpdateManyWithWhereNestedInput!]
+  upsert: [ResidentUpsertWithWhereUniqueWithoutUnitInput!]
+}
+
+input ResidentUpdateManyWithWhereNestedInput {
+  data: ResidentUpdateManyDataInput!
+  where: ResidentScalarWhereInput!
+}
+
+input ResidentUpdateWithoutCommunityDataInput {
+  age: String
+  id: String
+  level: AwareLevels
+  name: String
+  unit: UnitUpdateOneRequiredWithoutResidentsInput
+}
+
+input ResidentUpdateWithoutUnitDataInput {
+  age: String
+  community: CommunityUpdateOneRequiredWithoutResidentsInput
+  id: String
+  level: AwareLevels
+  name: String
+}
+
+input ResidentUpdateWithWhereUniqueWithoutCommunityInput {
+  data: ResidentUpdateWithoutCommunityDataInput!
+  where: ResidentWhereUniqueInput!
+}
+
+input ResidentUpdateWithWhereUniqueWithoutUnitInput {
+  data: ResidentUpdateWithoutUnitDataInput!
+  where: ResidentWhereUniqueInput!
+}
+
+input ResidentUpsertWithWhereUniqueWithoutCommunityInput {
+  create: ResidentCreateWithoutCommunityInput!
+  update: ResidentUpdateWithoutCommunityDataInput!
+  where: ResidentWhereUniqueInput!
+}
+
+input ResidentUpsertWithWhereUniqueWithoutUnitInput {
+  create: ResidentCreateWithoutUnitInput!
+  update: ResidentUpdateWithoutUnitDataInput!
+  where: ResidentWhereUniqueInput!
+}
+
+input ResidentWhereInput {
+  age: StringFilter
+  AND: [ResidentWhereInput!]
+  community: CommunityWhereInput
+  id: StringFilter
+  level: AwareLevels
+  name: StringFilter
+  NOT: [ResidentWhereInput!]
+  OR: [ResidentWhereInput!]
+  unit: UnitWhereInput
+}
+
+input ResidentWhereUniqueInput {
+  id: String
 }
 
 input StringFilter {
@@ -227,19 +584,178 @@ input StringFilter {
   startsWith: String
 }
 
-type User {
-  email: String!
+type Unit {
+  building: String!
   id: String!
+  residents(after: String, before: String, first: Int, last: Int, skip: Int): [Resident!]!
+  room: String!
+}
+
+input UnitCreateInput {
+  building: String!
+  community: CommunityCreateOneWithoutUnitsInput!
+  id: String
+  residents: ResidentCreateManyWithoutUnitInput
+  room: String!
+}
+
+input UnitCreateManyWithoutCommunityInput {
+  connect: [UnitWhereUniqueInput!]
+  create: [UnitCreateWithoutCommunityInput!]
+}
+
+input UnitCreateOneWithoutResidentsInput {
+  connect: UnitWhereUniqueInput
+  create: UnitCreateWithoutResidentsInput
+}
+
+input UnitCreateWithoutCommunityInput {
+  building: String!
+  id: String
+  residents: ResidentCreateManyWithoutUnitInput
+  room: String!
+}
+
+input UnitCreateWithoutResidentsInput {
+  building: String!
+  community: CommunityCreateOneWithoutUnitsInput!
+  id: String
+  room: String!
+}
+
+input UnitFilter {
+  every: UnitWhereInput
+  none: UnitWhereInput
+  some: UnitWhereInput
+}
+
+input UnitOrderByInput {
+  building: OrderByArg
+  id: OrderByArg
+  room: OrderByArg
+}
+
+input UnitScalarWhereInput {
+  AND: [UnitScalarWhereInput!]
+  building: StringFilter
+  id: StringFilter
+  NOT: [UnitScalarWhereInput!]
+  OR: [UnitScalarWhereInput!]
+  residents: ResidentFilter
+  room: StringFilter
+}
+
+input UnitUpdateInput {
+  building: String
+  community: CommunityUpdateOneRequiredWithoutUnitsInput
+  id: String
+  residents: ResidentUpdateManyWithoutUnitInput
+  room: String
+}
+
+input UnitUpdateManyDataInput {
+  building: String
+  id: String
+  room: String
+}
+
+input UnitUpdateManyMutationInput {
+  building: String
+  id: String
+  room: String
+}
+
+input UnitUpdateManyWithoutCommunityInput {
+  connect: [UnitWhereUniqueInput!]
+  create: [UnitCreateWithoutCommunityInput!]
+  delete: [UnitWhereUniqueInput!]
+  deleteMany: [UnitScalarWhereInput!]
+  disconnect: [UnitWhereUniqueInput!]
+  set: [UnitWhereUniqueInput!]
+  update: [UnitUpdateWithWhereUniqueWithoutCommunityInput!]
+  updateMany: [UnitUpdateManyWithWhereNestedInput!]
+  upsert: [UnitUpsertWithWhereUniqueWithoutCommunityInput!]
+}
+
+input UnitUpdateManyWithWhereNestedInput {
+  data: UnitUpdateManyDataInput!
+  where: UnitScalarWhereInput!
+}
+
+input UnitUpdateOneRequiredWithoutResidentsInput {
+  connect: UnitWhereUniqueInput
+  create: UnitCreateWithoutResidentsInput
+  update: UnitUpdateWithoutResidentsDataInput
+  upsert: UnitUpsertWithoutResidentsInput
+}
+
+input UnitUpdateWithoutCommunityDataInput {
+  building: String
+  id: String
+  residents: ResidentUpdateManyWithoutUnitInput
+  room: String
+}
+
+input UnitUpdateWithoutResidentsDataInput {
+  building: String
+  community: CommunityUpdateOneRequiredWithoutUnitsInput
+  id: String
+  room: String
+}
+
+input UnitUpdateWithWhereUniqueWithoutCommunityInput {
+  data: UnitUpdateWithoutCommunityDataInput!
+  where: UnitWhereUniqueInput!
+}
+
+input UnitUpsertWithoutResidentsInput {
+  create: UnitCreateWithoutResidentsInput!
+  update: UnitUpdateWithoutResidentsDataInput!
+}
+
+input UnitUpsertWithWhereUniqueWithoutCommunityInput {
+  create: UnitCreateWithoutCommunityInput!
+  update: UnitUpdateWithoutCommunityDataInput!
+  where: UnitWhereUniqueInput!
+}
+
+input UnitWhereInput {
+  AND: [UnitWhereInput!]
+  building: StringFilter
+  community: CommunityWhereInput
+  id: StringFilter
+  NOT: [UnitWhereInput!]
+  OR: [UnitWhereInput!]
+  residents: ResidentFilter
+  room: StringFilter
+}
+
+input UnitWhereUniqueInput {
+  id: String
+}
+
+type User {
+  id: String!
+  login: String!
   name: String
+  plot: Community
   posts: [Post!]!
 }
 
 input UserCreateInput {
-  email: String!
+  email: String
   id: String
+  login: String!
   name: String
   password: String!
+  plot: CommunityCreateOneWithoutUsersInput
   posts: PostCreateManyWithoutAuthorInput
+  role: String!
+}
+
+input UserCreateManyWithoutPlotInput {
+  connect: [UserWhereUniqueInput!]
+  create: [UserCreateWithoutPlotInput!]
 }
 
 input UserCreateOneWithoutPostsInput {
@@ -247,33 +763,98 @@ input UserCreateOneWithoutPostsInput {
   create: UserCreateWithoutPostsInput
 }
 
-input UserCreateWithoutPostsInput {
-  email: String!
+input UserCreateWithoutPlotInput {
+  email: String
   id: String
+  login: String!
   name: String
   password: String!
+  posts: PostCreateManyWithoutAuthorInput
+  role: String!
+}
+
+input UserCreateWithoutPostsInput {
+  email: String
+  id: String
+  login: String!
+  name: String
+  password: String!
+  plot: CommunityCreateOneWithoutUsersInput
+  role: String!
+}
+
+input UserFilter {
+  every: UserWhereInput
+  none: UserWhereInput
+  some: UserWhereInput
 }
 
 input UserOrderByInput {
   email: OrderByArg
   id: OrderByArg
+  login: OrderByArg
   name: OrderByArg
   password: OrderByArg
+  role: OrderByArg
+}
+
+input UserScalarWhereInput {
+  AND: [UserScalarWhereInput!]
+  email: NullableStringFilter
+  id: StringFilter
+  login: StringFilter
+  name: NullableStringFilter
+  NOT: [UserScalarWhereInput!]
+  OR: [UserScalarWhereInput!]
+  password: StringFilter
+  posts: PostFilter
+  role: StringFilter
 }
 
 input UserUpdateInput {
   email: String
   id: String
+  login: String
   name: String
   password: String
+  plot: CommunityUpdateOneWithoutUsersInput
   posts: PostUpdateManyWithoutAuthorInput
+  role: String
+}
+
+input UserUpdateManyDataInput {
+  email: String
+  id: String
+  login: String
+  name: String
+  password: String
+  role: String
 }
 
 input UserUpdateManyMutationInput {
   email: String
   id: String
+  login: String
   name: String
   password: String
+  role: String
+}
+
+input UserUpdateManyWithoutPlotInput {
+  connect: [UserWhereUniqueInput!]
+  create: [UserCreateWithoutPlotInput!]
+  delete: [UserWhereUniqueInput!]
+  deleteMany: [UserScalarWhereInput!]
+  disconnect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutPlotInput!]
+  updateMany: [UserUpdateManyWithWhereNestedInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutPlotInput!]
+}
+
+input UserUpdateManyWithWhereNestedInput {
+  data: UserUpdateManyDataInput!
+  where: UserScalarWhereInput!
 }
 
 input UserUpdateOneWithoutPostsInput {
@@ -285,11 +866,29 @@ input UserUpdateOneWithoutPostsInput {
   upsert: UserUpsertWithoutPostsInput
 }
 
+input UserUpdateWithoutPlotDataInput {
+  email: String
+  id: String
+  login: String
+  name: String
+  password: String
+  posts: PostUpdateManyWithoutAuthorInput
+  role: String
+}
+
 input UserUpdateWithoutPostsDataInput {
   email: String
   id: String
+  login: String
   name: String
   password: String
+  plot: CommunityUpdateOneWithoutUsersInput
+  role: String
+}
+
+input UserUpdateWithWhereUniqueWithoutPlotInput {
+  data: UserUpdateWithoutPlotDataInput!
+  where: UserWhereUniqueInput!
 }
 
 input UserUpsertWithoutPostsInput {
@@ -297,18 +896,28 @@ input UserUpsertWithoutPostsInput {
   update: UserUpdateWithoutPostsDataInput!
 }
 
+input UserUpsertWithWhereUniqueWithoutPlotInput {
+  create: UserCreateWithoutPlotInput!
+  update: UserUpdateWithoutPlotDataInput!
+  where: UserWhereUniqueInput!
+}
+
 input UserWhereInput {
   AND: [UserWhereInput!]
-  email: StringFilter
+  email: NullableStringFilter
   id: StringFilter
+  login: StringFilter
   name: NullableStringFilter
   NOT: [UserWhereInput!]
   OR: [UserWhereInput!]
   password: StringFilter
+  plot: CommunityWhereInput
   posts: PostFilter
+  role: StringFilter
 }
 
 input UserWhereUniqueInput {
   email: String
   id: String
+  login: String
 }

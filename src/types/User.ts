@@ -9,7 +9,7 @@ export const AuthPayload = objectType({
   definition(t) {
     t.string("token")
     t.field("user", { type: "User" })
-  },
+  }
 })
 
 export const User = objectType({
@@ -17,9 +17,10 @@ export const User = objectType({
   definition(t) {
     t.model.id()
     t.model.name()
-    t.model.email()
+    t.model.login()
     t.model.posts({ pagination: false })
-  },
+    t.model.plot()
+  }
 })
 
 export const userQuery = extendType({
@@ -29,9 +30,9 @@ export const userQuery = extendType({
     t.crud.users({
       filtering: true,
       pagination: true,
-      ordering: true,
+      ordering: true
     })
-  },
+  }
 })
 export const userMutation = extendType({
   type: "Mutation",
@@ -45,40 +46,41 @@ export const userMutation = extendType({
       type: "AuthPayload",
       args: {
         name: stringArg(),
-        email: stringArg({ nullable: false }),
-        password: stringArg({ nullable: false }),
+        login: stringArg({ nullable: false }),
+        password: stringArg({ nullable: false })
       },
       resolve: async (_parent, args, ctx) => {
-        const { name, email, password } = args
+        const { name, login, password } = args
         const hashedPassword = await hash(password, 10)
         const user = await ctx.prisma.user.create({
           data: {
             name,
-            email,
-            password: hashedPassword,
-          },
+            login,
+            role: "User",
+            password: hashedPassword
+          }
         })
         return {
           token: sign({ userId: user.id }, APP_SECRET),
-          user,
+          user
         }
-      },
+      }
     })
 
     t.field("login", {
       type: "AuthPayload",
       args: {
-        email: stringArg({ nullable: false }),
-        password: stringArg({ nullable: false }),
+        login: stringArg({ nullable: false }),
+        password: stringArg({ nullable: false })
       },
-      resolve: async (_parent, { email, password }, context) => {
+      resolve: async (_parent, { login, password }, context) => {
         const user = await context.prisma.user.findOne({
           where: {
-            email,
-          },
+            login
+          }
         })
         if (!user) {
-          throw new Error(`No user found for email: ${email}`)
+          throw new Error(`No user found for login: ${login}`)
         }
         const passwordValid = await compare(password, user.password)
         if (!passwordValid) {
@@ -86,9 +88,9 @@ export const userMutation = extendType({
         }
         return {
           token: sign({ userId: user.id }, APP_SECRET),
-          user,
+          user
         }
-      },
+      }
     })
-  },
+  }
 })

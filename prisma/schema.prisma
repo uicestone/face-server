@@ -30,9 +30,12 @@ model User {
 }
 
 model Community {
-  id      String @default(cuid()) @id
-  name    String
-  address String
+  id        String     @default(cuid()) @id
+  name      String
+  address   String
+  residents Resident[]
+  units     Unit[]
+  users     User[]
 }
 
 enum AwareLevels {

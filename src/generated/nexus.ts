@@ -24,6 +24,132 @@ export interface NexusGenInputs {
     equals?: boolean | null; // Boolean
     not?: boolean | null; // Boolean
   }
+  CommunityCreateInput: { // input type
+    address: string; // String!
+    id?: string | null; // String
+    name: string; // String!
+    residents?: NexusGenInputs['ResidentCreateManyWithoutCommunityInput'] | null; // ResidentCreateManyWithoutCommunityInput
+    units?: NexusGenInputs['UnitCreateManyWithoutCommunityInput'] | null; // UnitCreateManyWithoutCommunityInput
+    users?: NexusGenInputs['UserCreateManyWithoutPlotInput'] | null; // UserCreateManyWithoutPlotInput
+  }
+  CommunityCreateOneWithoutResidentsInput: { // input type
+    connect?: NexusGenInputs['CommunityWhereUniqueInput'] | null; // CommunityWhereUniqueInput
+    create?: NexusGenInputs['CommunityCreateWithoutResidentsInput'] | null; // CommunityCreateWithoutResidentsInput
+  }
+  CommunityCreateOneWithoutUnitsInput: { // input type
+    connect?: NexusGenInputs['CommunityWhereUniqueInput'] | null; // CommunityWhereUniqueInput
+    create?: NexusGenInputs['CommunityCreateWithoutUnitsInput'] | null; // CommunityCreateWithoutUnitsInput
+  }
+  CommunityCreateOneWithoutUsersInput: { // input type
+    connect?: NexusGenInputs['CommunityWhereUniqueInput'] | null; // CommunityWhereUniqueInput
+    create?: NexusGenInputs['CommunityCreateWithoutUsersInput'] | null; // CommunityCreateWithoutUsersInput
+  }
+  CommunityCreateWithoutResidentsInput: { // input type
+    address: string; // String!
+    id?: string | null; // String
+    name: string; // String!
+    units?: NexusGenInputs['UnitCreateManyWithoutCommunityInput'] | null; // UnitCreateManyWithoutCommunityInput
+    users?: NexusGenInputs['UserCreateManyWithoutPlotInput'] | null; // UserCreateManyWithoutPlotInput
+  }
+  CommunityCreateWithoutUnitsInput: { // input type
+    address: string; // String!
+    id?: string | null; // String
+    name: string; // String!
+    residents?: NexusGenInputs['ResidentCreateManyWithoutCommunityInput'] | null; // ResidentCreateManyWithoutCommunityInput
+    users?: NexusGenInputs['UserCreateManyWithoutPlotInput'] | null; // UserCreateManyWithoutPlotInput
+  }
+  CommunityCreateWithoutUsersInput: { // input type
+    address: string; // String!
+    id?: string | null; // String
+    name: string; // String!
+    residents?: NexusGenInputs['ResidentCreateManyWithoutCommunityInput'] | null; // ResidentCreateManyWithoutCommunityInput
+    units?: NexusGenInputs['UnitCreateManyWithoutCommunityInput'] | null; // UnitCreateManyWithoutCommunityInput
+  }
+  CommunityOrderByInput: { // input type
+    address?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+  }
+  CommunityUpdateInput: { // input type
+    address?: string | null; // String
+    id?: string | null; // String
+    name?: string | null; // String
+    residents?: NexusGenInputs['ResidentUpdateManyWithoutCommunityInput'] | null; // ResidentUpdateManyWithoutCommunityInput
+    units?: NexusGenInputs['UnitUpdateManyWithoutCommunityInput'] | null; // UnitUpdateManyWithoutCommunityInput
+    users?: NexusGenInputs['UserUpdateManyWithoutPlotInput'] | null; // UserUpdateManyWithoutPlotInput
+  }
+  CommunityUpdateManyMutationInput: { // input type
+    address?: string | null; // String
+    id?: string | null; // String
+    name?: string | null; // String
+  }
+  CommunityUpdateOneRequiredWithoutResidentsInput: { // input type
+    connect?: NexusGenInputs['CommunityWhereUniqueInput'] | null; // CommunityWhereUniqueInput
+    create?: NexusGenInputs['CommunityCreateWithoutResidentsInput'] | null; // CommunityCreateWithoutResidentsInput
+    update?: NexusGenInputs['CommunityUpdateWithoutResidentsDataInput'] | null; // CommunityUpdateWithoutResidentsDataInput
+    upsert?: NexusGenInputs['CommunityUpsertWithoutResidentsInput'] | null; // CommunityUpsertWithoutResidentsInput
+  }
+  CommunityUpdateOneRequiredWithoutUnitsInput: { // input type
+    connect?: NexusGenInputs['CommunityWhereUniqueInput'] | null; // CommunityWhereUniqueInput
+    create?: NexusGenInputs['CommunityCreateWithoutUnitsInput'] | null; // CommunityCreateWithoutUnitsInput
+    update?: NexusGenInputs['CommunityUpdateWithoutUnitsDataInput'] | null; // CommunityUpdateWithoutUnitsDataInput
+    upsert?: NexusGenInputs['CommunityUpsertWithoutUnitsInput'] | null; // CommunityUpsertWithoutUnitsInput
+  }
+  CommunityUpdateOneWithoutUsersInput: { // input type
+    connect?: NexusGenInputs['CommunityWhereUniqueInput'] | null; // CommunityWhereUniqueInput
+    create?: NexusGenInputs['CommunityCreateWithoutUsersInput'] | null; // CommunityCreateWithoutUsersInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['CommunityUpdateWithoutUsersDataInput'] | null; // CommunityUpdateWithoutUsersDataInput
+    upsert?: NexusGenInputs['CommunityUpsertWithoutUsersInput'] | null; // CommunityUpsertWithoutUsersInput
+  }
+  CommunityUpdateWithoutResidentsDataInput: { // input type
+    address?: string | null; // String
+    id?: string | null; // String
+    name?: string | null; // String
+    units?: NexusGenInputs['UnitUpdateManyWithoutCommunityInput'] | null; // UnitUpdateManyWithoutCommunityInput
+    users?: NexusGenInputs['UserUpdateManyWithoutPlotInput'] | null; // UserUpdateManyWithoutPlotInput
+  }
+  CommunityUpdateWithoutUnitsDataInput: { // input type
+    address?: string | null; // String
+    id?: string | null; // String
+    name?: string | null; // String
+    residents?: NexusGenInputs['ResidentUpdateManyWithoutCommunityInput'] | null; // ResidentUpdateManyWithoutCommunityInput
+    users?: NexusGenInputs['UserUpdateManyWithoutPlotInput'] | null; // UserUpdateManyWithoutPlotInput
+  }
+  CommunityUpdateWithoutUsersDataInput: { // input type
+    address?: string | null; // String
+    id?: string | null; // String
+    name?: string | null; // String
+    residents?: NexusGenInputs['ResidentUpdateManyWithoutCommunityInput'] | null; // ResidentUpdateManyWithoutCommunityInput
+    units?: NexusGenInputs['UnitUpdateManyWithoutCommunityInput'] | null; // UnitUpdateManyWithoutCommunityInput
+  }
+  CommunityUpsertWithoutResidentsInput: { // input type
+    create: NexusGenInputs['CommunityCreateWithoutResidentsInput']; // CommunityCreateWithoutResidentsInput!
+    update: NexusGenInputs['CommunityUpdateWithoutResidentsDataInput']; // CommunityUpdateWithoutResidentsDataInput!
+  }
+  CommunityUpsertWithoutUnitsInput: { // input type
+    create: NexusGenInputs['CommunityCreateWithoutUnitsInput']; // CommunityCreateWithoutUnitsInput!
+    update: NexusGenInputs['CommunityUpdateWithoutUnitsDataInput']; // CommunityUpdateWithoutUnitsDataInput!
+  }
+  CommunityUpsertWithoutUsersInput: { // input type
+    create: NexusGenInputs['CommunityCreateWithoutUsersInput']; // CommunityCreateWithoutUsersInput!
+    update: NexusGenInputs['CommunityUpdateWithoutUsersDataInput']; // CommunityUpdateWithoutUsersDataInput!
+  }
+  CommunityWhereInput: { // input type
+    address?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    AND?: NexusGenInputs['CommunityWhereInput'][] | null; // [CommunityWhereInput!]
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['CommunityWhereInput'][] | null; // [CommunityWhereInput!]
+    OR?: NexusGenInputs['CommunityWhereInput'][] | null; // [CommunityWhereInput!]
+    residents?: NexusGenInputs['ResidentFilter'] | null; // ResidentFilter
+    units?: NexusGenInputs['UnitFilter'] | null; // UnitFilter
+    users?: NexusGenInputs['UserFilter'] | null; // UserFilter
+  }
+  CommunityWhereUniqueInput: { // input type
+    id?: string | null; // String
+  }
   DateTimeFilter: { // input type
     equals?: any | null; // DateTime
     gt?: any | null; // DateTime
@@ -164,6 +290,148 @@ export interface NexusGenInputs {
   PostWhereUniqueInput: { // input type
     id?: string | null; // String
   }
+  ResidentCreateInput: { // input type
+    age: string; // String!
+    community: NexusGenInputs['CommunityCreateOneWithoutResidentsInput']; // CommunityCreateOneWithoutResidentsInput!
+    id?: string | null; // String
+    level: NexusGenEnums['AwareLevels']; // AwareLevels!
+    name: string; // String!
+    unit: NexusGenInputs['UnitCreateOneWithoutResidentsInput']; // UnitCreateOneWithoutResidentsInput!
+  }
+  ResidentCreateManyWithoutCommunityInput: { // input type
+    connect?: NexusGenInputs['ResidentWhereUniqueInput'][] | null; // [ResidentWhereUniqueInput!]
+    create?: NexusGenInputs['ResidentCreateWithoutCommunityInput'][] | null; // [ResidentCreateWithoutCommunityInput!]
+  }
+  ResidentCreateManyWithoutUnitInput: { // input type
+    connect?: NexusGenInputs['ResidentWhereUniqueInput'][] | null; // [ResidentWhereUniqueInput!]
+    create?: NexusGenInputs['ResidentCreateWithoutUnitInput'][] | null; // [ResidentCreateWithoutUnitInput!]
+  }
+  ResidentCreateWithoutCommunityInput: { // input type
+    age: string; // String!
+    id?: string | null; // String
+    level: NexusGenEnums['AwareLevels']; // AwareLevels!
+    name: string; // String!
+    unit: NexusGenInputs['UnitCreateOneWithoutResidentsInput']; // UnitCreateOneWithoutResidentsInput!
+  }
+  ResidentCreateWithoutUnitInput: { // input type
+    age: string; // String!
+    community: NexusGenInputs['CommunityCreateOneWithoutResidentsInput']; // CommunityCreateOneWithoutResidentsInput!
+    id?: string | null; // String
+    level: NexusGenEnums['AwareLevels']; // AwareLevels!
+    name: string; // String!
+  }
+  ResidentFilter: { // input type
+    every?: NexusGenInputs['ResidentWhereInput'] | null; // ResidentWhereInput
+    none?: NexusGenInputs['ResidentWhereInput'] | null; // ResidentWhereInput
+    some?: NexusGenInputs['ResidentWhereInput'] | null; // ResidentWhereInput
+  }
+  ResidentOrderByInput: { // input type
+    age?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    level?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+  }
+  ResidentScalarWhereInput: { // input type
+    age?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    AND?: NexusGenInputs['ResidentScalarWhereInput'][] | null; // [ResidentScalarWhereInput!]
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    level?: NexusGenEnums['AwareLevels'] | null; // AwareLevels
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['ResidentScalarWhereInput'][] | null; // [ResidentScalarWhereInput!]
+    OR?: NexusGenInputs['ResidentScalarWhereInput'][] | null; // [ResidentScalarWhereInput!]
+  }
+  ResidentUpdateInput: { // input type
+    age?: string | null; // String
+    community?: NexusGenInputs['CommunityUpdateOneRequiredWithoutResidentsInput'] | null; // CommunityUpdateOneRequiredWithoutResidentsInput
+    id?: string | null; // String
+    level?: NexusGenEnums['AwareLevels'] | null; // AwareLevels
+    name?: string | null; // String
+    unit?: NexusGenInputs['UnitUpdateOneRequiredWithoutResidentsInput'] | null; // UnitUpdateOneRequiredWithoutResidentsInput
+  }
+  ResidentUpdateManyDataInput: { // input type
+    age?: string | null; // String
+    id?: string | null; // String
+    level?: NexusGenEnums['AwareLevels'] | null; // AwareLevels
+    name?: string | null; // String
+  }
+  ResidentUpdateManyMutationInput: { // input type
+    age?: string | null; // String
+    id?: string | null; // String
+    level?: NexusGenEnums['AwareLevels'] | null; // AwareLevels
+    name?: string | null; // String
+  }
+  ResidentUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['ResidentUpdateManyDataInput']; // ResidentUpdateManyDataInput!
+    where: NexusGenInputs['ResidentScalarWhereInput']; // ResidentScalarWhereInput!
+  }
+  ResidentUpdateManyWithoutCommunityInput: { // input type
+    connect?: NexusGenInputs['ResidentWhereUniqueInput'][] | null; // [ResidentWhereUniqueInput!]
+    create?: NexusGenInputs['ResidentCreateWithoutCommunityInput'][] | null; // [ResidentCreateWithoutCommunityInput!]
+    delete?: NexusGenInputs['ResidentWhereUniqueInput'][] | null; // [ResidentWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['ResidentScalarWhereInput'][] | null; // [ResidentScalarWhereInput!]
+    disconnect?: NexusGenInputs['ResidentWhereUniqueInput'][] | null; // [ResidentWhereUniqueInput!]
+    set?: NexusGenInputs['ResidentWhereUniqueInput'][] | null; // [ResidentWhereUniqueInput!]
+    update?: NexusGenInputs['ResidentUpdateWithWhereUniqueWithoutCommunityInput'][] | null; // [ResidentUpdateWithWhereUniqueWithoutCommunityInput!]
+    updateMany?: NexusGenInputs['ResidentUpdateManyWithWhereNestedInput'][] | null; // [ResidentUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['ResidentUpsertWithWhereUniqueWithoutCommunityInput'][] | null; // [ResidentUpsertWithWhereUniqueWithoutCommunityInput!]
+  }
+  ResidentUpdateManyWithoutUnitInput: { // input type
+    connect?: NexusGenInputs['ResidentWhereUniqueInput'][] | null; // [ResidentWhereUniqueInput!]
+    create?: NexusGenInputs['ResidentCreateWithoutUnitInput'][] | null; // [ResidentCreateWithoutUnitInput!]
+    delete?: NexusGenInputs['ResidentWhereUniqueInput'][] | null; // [ResidentWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['ResidentScalarWhereInput'][] | null; // [ResidentScalarWhereInput!]
+    disconnect?: NexusGenInputs['ResidentWhereUniqueInput'][] | null; // [ResidentWhereUniqueInput!]
+    set?: NexusGenInputs['ResidentWhereUniqueInput'][] | null; // [ResidentWhereUniqueInput!]
+    update?: NexusGenInputs['ResidentUpdateWithWhereUniqueWithoutUnitInput'][] | null; // [ResidentUpdateWithWhereUniqueWithoutUnitInput!]
+    updateMany?: NexusGenInputs['ResidentUpdateManyWithWhereNestedInput'][] | null; // [ResidentUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['ResidentUpsertWithWhereUniqueWithoutUnitInput'][] | null; // [ResidentUpsertWithWhereUniqueWithoutUnitInput!]
+  }
+  ResidentUpdateWithWhereUniqueWithoutCommunityInput: { // input type
+    data: NexusGenInputs['ResidentUpdateWithoutCommunityDataInput']; // ResidentUpdateWithoutCommunityDataInput!
+    where: NexusGenInputs['ResidentWhereUniqueInput']; // ResidentWhereUniqueInput!
+  }
+  ResidentUpdateWithWhereUniqueWithoutUnitInput: { // input type
+    data: NexusGenInputs['ResidentUpdateWithoutUnitDataInput']; // ResidentUpdateWithoutUnitDataInput!
+    where: NexusGenInputs['ResidentWhereUniqueInput']; // ResidentWhereUniqueInput!
+  }
+  ResidentUpdateWithoutCommunityDataInput: { // input type
+    age?: string | null; // String
+    id?: string | null; // String
+    level?: NexusGenEnums['AwareLevels'] | null; // AwareLevels
+    name?: string | null; // String
+    unit?: NexusGenInputs['UnitUpdateOneRequiredWithoutResidentsInput'] | null; // UnitUpdateOneRequiredWithoutResidentsInput
+  }
+  ResidentUpdateWithoutUnitDataInput: { // input type
+    age?: string | null; // String
+    community?: NexusGenInputs['CommunityUpdateOneRequiredWithoutResidentsInput'] | null; // CommunityUpdateOneRequiredWithoutResidentsInput
+    id?: string | null; // String
+    level?: NexusGenEnums['AwareLevels'] | null; // AwareLevels
+    name?: string | null; // String
+  }
+  ResidentUpsertWithWhereUniqueWithoutCommunityInput: { // input type
+    create: NexusGenInputs['ResidentCreateWithoutCommunityInput']; // ResidentCreateWithoutCommunityInput!
+    update: NexusGenInputs['ResidentUpdateWithoutCommunityDataInput']; // ResidentUpdateWithoutCommunityDataInput!
+    where: NexusGenInputs['ResidentWhereUniqueInput']; // ResidentWhereUniqueInput!
+  }
+  ResidentUpsertWithWhereUniqueWithoutUnitInput: { // input type
+    create: NexusGenInputs['ResidentCreateWithoutUnitInput']; // ResidentCreateWithoutUnitInput!
+    update: NexusGenInputs['ResidentUpdateWithoutUnitDataInput']; // ResidentUpdateWithoutUnitDataInput!
+    where: NexusGenInputs['ResidentWhereUniqueInput']; // ResidentWhereUniqueInput!
+  }
+  ResidentWhereInput: { // input type
+    age?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    AND?: NexusGenInputs['ResidentWhereInput'][] | null; // [ResidentWhereInput!]
+    community?: NexusGenInputs['CommunityWhereInput'] | null; // CommunityWhereInput
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    level?: NexusGenEnums['AwareLevels'] | null; // AwareLevels
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['ResidentWhereInput'][] | null; // [ResidentWhereInput!]
+    OR?: NexusGenInputs['ResidentWhereInput'][] | null; // [ResidentWhereInput!]
+    unit?: NexusGenInputs['UnitWhereInput'] | null; // UnitWhereInput
+  }
+  ResidentWhereUniqueInput: { // input type
+    id?: string | null; // String
+  }
   StringFilter: { // input type
     contains?: string | null; // String
     endsWith?: string | null; // String
@@ -177,41 +445,229 @@ export interface NexusGenInputs {
     notIn?: string[] | null; // [String!]
     startsWith?: string | null; // String
   }
-  UserCreateInput: { // input type
-    email: string; // String!
+  UnitCreateInput: { // input type
+    building: string; // String!
+    community: NexusGenInputs['CommunityCreateOneWithoutUnitsInput']; // CommunityCreateOneWithoutUnitsInput!
     id?: string | null; // String
+    residents?: NexusGenInputs['ResidentCreateManyWithoutUnitInput'] | null; // ResidentCreateManyWithoutUnitInput
+    room: string; // String!
+  }
+  UnitCreateManyWithoutCommunityInput: { // input type
+    connect?: NexusGenInputs['UnitWhereUniqueInput'][] | null; // [UnitWhereUniqueInput!]
+    create?: NexusGenInputs['UnitCreateWithoutCommunityInput'][] | null; // [UnitCreateWithoutCommunityInput!]
+  }
+  UnitCreateOneWithoutResidentsInput: { // input type
+    connect?: NexusGenInputs['UnitWhereUniqueInput'] | null; // UnitWhereUniqueInput
+    create?: NexusGenInputs['UnitCreateWithoutResidentsInput'] | null; // UnitCreateWithoutResidentsInput
+  }
+  UnitCreateWithoutCommunityInput: { // input type
+    building: string; // String!
+    id?: string | null; // String
+    residents?: NexusGenInputs['ResidentCreateManyWithoutUnitInput'] | null; // ResidentCreateManyWithoutUnitInput
+    room: string; // String!
+  }
+  UnitCreateWithoutResidentsInput: { // input type
+    building: string; // String!
+    community: NexusGenInputs['CommunityCreateOneWithoutUnitsInput']; // CommunityCreateOneWithoutUnitsInput!
+    id?: string | null; // String
+    room: string; // String!
+  }
+  UnitFilter: { // input type
+    every?: NexusGenInputs['UnitWhereInput'] | null; // UnitWhereInput
+    none?: NexusGenInputs['UnitWhereInput'] | null; // UnitWhereInput
+    some?: NexusGenInputs['UnitWhereInput'] | null; // UnitWhereInput
+  }
+  UnitOrderByInput: { // input type
+    building?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    room?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+  }
+  UnitScalarWhereInput: { // input type
+    AND?: NexusGenInputs['UnitScalarWhereInput'][] | null; // [UnitScalarWhereInput!]
+    building?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['UnitScalarWhereInput'][] | null; // [UnitScalarWhereInput!]
+    OR?: NexusGenInputs['UnitScalarWhereInput'][] | null; // [UnitScalarWhereInput!]
+    residents?: NexusGenInputs['ResidentFilter'] | null; // ResidentFilter
+    room?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  UnitUpdateInput: { // input type
+    building?: string | null; // String
+    community?: NexusGenInputs['CommunityUpdateOneRequiredWithoutUnitsInput'] | null; // CommunityUpdateOneRequiredWithoutUnitsInput
+    id?: string | null; // String
+    residents?: NexusGenInputs['ResidentUpdateManyWithoutUnitInput'] | null; // ResidentUpdateManyWithoutUnitInput
+    room?: string | null; // String
+  }
+  UnitUpdateManyDataInput: { // input type
+    building?: string | null; // String
+    id?: string | null; // String
+    room?: string | null; // String
+  }
+  UnitUpdateManyMutationInput: { // input type
+    building?: string | null; // String
+    id?: string | null; // String
+    room?: string | null; // String
+  }
+  UnitUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['UnitUpdateManyDataInput']; // UnitUpdateManyDataInput!
+    where: NexusGenInputs['UnitScalarWhereInput']; // UnitScalarWhereInput!
+  }
+  UnitUpdateManyWithoutCommunityInput: { // input type
+    connect?: NexusGenInputs['UnitWhereUniqueInput'][] | null; // [UnitWhereUniqueInput!]
+    create?: NexusGenInputs['UnitCreateWithoutCommunityInput'][] | null; // [UnitCreateWithoutCommunityInput!]
+    delete?: NexusGenInputs['UnitWhereUniqueInput'][] | null; // [UnitWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['UnitScalarWhereInput'][] | null; // [UnitScalarWhereInput!]
+    disconnect?: NexusGenInputs['UnitWhereUniqueInput'][] | null; // [UnitWhereUniqueInput!]
+    set?: NexusGenInputs['UnitWhereUniqueInput'][] | null; // [UnitWhereUniqueInput!]
+    update?: NexusGenInputs['UnitUpdateWithWhereUniqueWithoutCommunityInput'][] | null; // [UnitUpdateWithWhereUniqueWithoutCommunityInput!]
+    updateMany?: NexusGenInputs['UnitUpdateManyWithWhereNestedInput'][] | null; // [UnitUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['UnitUpsertWithWhereUniqueWithoutCommunityInput'][] | null; // [UnitUpsertWithWhereUniqueWithoutCommunityInput!]
+  }
+  UnitUpdateOneRequiredWithoutResidentsInput: { // input type
+    connect?: NexusGenInputs['UnitWhereUniqueInput'] | null; // UnitWhereUniqueInput
+    create?: NexusGenInputs['UnitCreateWithoutResidentsInput'] | null; // UnitCreateWithoutResidentsInput
+    update?: NexusGenInputs['UnitUpdateWithoutResidentsDataInput'] | null; // UnitUpdateWithoutResidentsDataInput
+    upsert?: NexusGenInputs['UnitUpsertWithoutResidentsInput'] | null; // UnitUpsertWithoutResidentsInput
+  }
+  UnitUpdateWithWhereUniqueWithoutCommunityInput: { // input type
+    data: NexusGenInputs['UnitUpdateWithoutCommunityDataInput']; // UnitUpdateWithoutCommunityDataInput!
+    where: NexusGenInputs['UnitWhereUniqueInput']; // UnitWhereUniqueInput!
+  }
+  UnitUpdateWithoutCommunityDataInput: { // input type
+    building?: string | null; // String
+    id?: string | null; // String
+    residents?: NexusGenInputs['ResidentUpdateManyWithoutUnitInput'] | null; // ResidentUpdateManyWithoutUnitInput
+    room?: string | null; // String
+  }
+  UnitUpdateWithoutResidentsDataInput: { // input type
+    building?: string | null; // String
+    community?: NexusGenInputs['CommunityUpdateOneRequiredWithoutUnitsInput'] | null; // CommunityUpdateOneRequiredWithoutUnitsInput
+    id?: string | null; // String
+    room?: string | null; // String
+  }
+  UnitUpsertWithWhereUniqueWithoutCommunityInput: { // input type
+    create: NexusGenInputs['UnitCreateWithoutCommunityInput']; // UnitCreateWithoutCommunityInput!
+    update: NexusGenInputs['UnitUpdateWithoutCommunityDataInput']; // UnitUpdateWithoutCommunityDataInput!
+    where: NexusGenInputs['UnitWhereUniqueInput']; // UnitWhereUniqueInput!
+  }
+  UnitUpsertWithoutResidentsInput: { // input type
+    create: NexusGenInputs['UnitCreateWithoutResidentsInput']; // UnitCreateWithoutResidentsInput!
+    update: NexusGenInputs['UnitUpdateWithoutResidentsDataInput']; // UnitUpdateWithoutResidentsDataInput!
+  }
+  UnitWhereInput: { // input type
+    AND?: NexusGenInputs['UnitWhereInput'][] | null; // [UnitWhereInput!]
+    building?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    community?: NexusGenInputs['CommunityWhereInput'] | null; // CommunityWhereInput
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['UnitWhereInput'][] | null; // [UnitWhereInput!]
+    OR?: NexusGenInputs['UnitWhereInput'][] | null; // [UnitWhereInput!]
+    residents?: NexusGenInputs['ResidentFilter'] | null; // ResidentFilter
+    room?: NexusGenInputs['StringFilter'] | null; // StringFilter
+  }
+  UnitWhereUniqueInput: { // input type
+    id?: string | null; // String
+  }
+  UserCreateInput: { // input type
+    email?: string | null; // String
+    id?: string | null; // String
+    login: string; // String!
     name?: string | null; // String
     password: string; // String!
+    plot?: NexusGenInputs['CommunityCreateOneWithoutUsersInput'] | null; // CommunityCreateOneWithoutUsersInput
     posts?: NexusGenInputs['PostCreateManyWithoutAuthorInput'] | null; // PostCreateManyWithoutAuthorInput
+    role: string; // String!
+  }
+  UserCreateManyWithoutPlotInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'][] | null; // [UserWhereUniqueInput!]
+    create?: NexusGenInputs['UserCreateWithoutPlotInput'][] | null; // [UserCreateWithoutPlotInput!]
   }
   UserCreateOneWithoutPostsInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
     create?: NexusGenInputs['UserCreateWithoutPostsInput'] | null; // UserCreateWithoutPostsInput
   }
-  UserCreateWithoutPostsInput: { // input type
-    email: string; // String!
+  UserCreateWithoutPlotInput: { // input type
+    email?: string | null; // String
     id?: string | null; // String
+    login: string; // String!
     name?: string | null; // String
     password: string; // String!
+    posts?: NexusGenInputs['PostCreateManyWithoutAuthorInput'] | null; // PostCreateManyWithoutAuthorInput
+    role: string; // String!
+  }
+  UserCreateWithoutPostsInput: { // input type
+    email?: string | null; // String
+    id?: string | null; // String
+    login: string; // String!
+    name?: string | null; // String
+    password: string; // String!
+    plot?: NexusGenInputs['CommunityCreateOneWithoutUsersInput'] | null; // CommunityCreateOneWithoutUsersInput
+    role: string; // String!
+  }
+  UserFilter: { // input type
+    every?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    none?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
+    some?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
   }
   UserOrderByInput: { // input type
     email?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     id?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    login?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     name?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
     password?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+    role?: NexusGenEnums['OrderByArg'] | null; // OrderByArg
+  }
+  UserScalarWhereInput: { // input type
+    AND?: NexusGenInputs['UserScalarWhereInput'][] | null; // [UserScalarWhereInput!]
+    email?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    login?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    NOT?: NexusGenInputs['UserScalarWhereInput'][] | null; // [UserScalarWhereInput!]
+    OR?: NexusGenInputs['UserScalarWhereInput'][] | null; // [UserScalarWhereInput!]
+    password?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    posts?: NexusGenInputs['PostFilter'] | null; // PostFilter
+    role?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   UserUpdateInput: { // input type
     email?: string | null; // String
     id?: string | null; // String
+    login?: string | null; // String
     name?: string | null; // String
     password?: string | null; // String
+    plot?: NexusGenInputs['CommunityUpdateOneWithoutUsersInput'] | null; // CommunityUpdateOneWithoutUsersInput
     posts?: NexusGenInputs['PostUpdateManyWithoutAuthorInput'] | null; // PostUpdateManyWithoutAuthorInput
+    role?: string | null; // String
+  }
+  UserUpdateManyDataInput: { // input type
+    email?: string | null; // String
+    id?: string | null; // String
+    login?: string | null; // String
+    name?: string | null; // String
+    password?: string | null; // String
+    role?: string | null; // String
   }
   UserUpdateManyMutationInput: { // input type
     email?: string | null; // String
     id?: string | null; // String
+    login?: string | null; // String
     name?: string | null; // String
     password?: string | null; // String
+    role?: string | null; // String
+  }
+  UserUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['UserUpdateManyDataInput']; // UserUpdateManyDataInput!
+    where: NexusGenInputs['UserScalarWhereInput']; // UserScalarWhereInput!
+  }
+  UserUpdateManyWithoutPlotInput: { // input type
+    connect?: NexusGenInputs['UserWhereUniqueInput'][] | null; // [UserWhereUniqueInput!]
+    create?: NexusGenInputs['UserCreateWithoutPlotInput'][] | null; // [UserCreateWithoutPlotInput!]
+    delete?: NexusGenInputs['UserWhereUniqueInput'][] | null; // [UserWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['UserScalarWhereInput'][] | null; // [UserScalarWhereInput!]
+    disconnect?: NexusGenInputs['UserWhereUniqueInput'][] | null; // [UserWhereUniqueInput!]
+    set?: NexusGenInputs['UserWhereUniqueInput'][] | null; // [UserWhereUniqueInput!]
+    update?: NexusGenInputs['UserUpdateWithWhereUniqueWithoutPlotInput'][] | null; // [UserUpdateWithWhereUniqueWithoutPlotInput!]
+    updateMany?: NexusGenInputs['UserUpdateManyWithWhereNestedInput'][] | null; // [UserUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['UserUpsertWithWhereUniqueWithoutPlotInput'][] | null; // [UserUpsertWithWhereUniqueWithoutPlotInput!]
   }
   UserUpdateOneWithoutPostsInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
@@ -221,11 +677,32 @@ export interface NexusGenInputs {
     update?: NexusGenInputs['UserUpdateWithoutPostsDataInput'] | null; // UserUpdateWithoutPostsDataInput
     upsert?: NexusGenInputs['UserUpsertWithoutPostsInput'] | null; // UserUpsertWithoutPostsInput
   }
+  UserUpdateWithWhereUniqueWithoutPlotInput: { // input type
+    data: NexusGenInputs['UserUpdateWithoutPlotDataInput']; // UserUpdateWithoutPlotDataInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+  }
+  UserUpdateWithoutPlotDataInput: { // input type
+    email?: string | null; // String
+    id?: string | null; // String
+    login?: string | null; // String
+    name?: string | null; // String
+    password?: string | null; // String
+    posts?: NexusGenInputs['PostUpdateManyWithoutAuthorInput'] | null; // PostUpdateManyWithoutAuthorInput
+    role?: string | null; // String
+  }
   UserUpdateWithoutPostsDataInput: { // input type
     email?: string | null; // String
     id?: string | null; // String
+    login?: string | null; // String
     name?: string | null; // String
     password?: string | null; // String
+    plot?: NexusGenInputs['CommunityUpdateOneWithoutUsersInput'] | null; // CommunityUpdateOneWithoutUsersInput
+    role?: string | null; // String
+  }
+  UserUpsertWithWhereUniqueWithoutPlotInput: { // input type
+    create: NexusGenInputs['UserCreateWithoutPlotInput']; // UserCreateWithoutPlotInput!
+    update: NexusGenInputs['UserUpdateWithoutPlotDataInput']; // UserUpdateWithoutPlotDataInput!
+    where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
   }
   UserUpsertWithoutPostsInput: { // input type
     create: NexusGenInputs['UserCreateWithoutPostsInput']; // UserCreateWithoutPostsInput!
@@ -233,21 +710,26 @@ export interface NexusGenInputs {
   }
   UserWhereInput: { // input type
     AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
-    email?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    email?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
     id?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    login?: NexusGenInputs['StringFilter'] | null; // StringFilter
     name?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
     NOT?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     OR?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     password?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    plot?: NexusGenInputs['CommunityWhereInput'] | null; // CommunityWhereInput
     posts?: NexusGenInputs['PostFilter'] | null; // PostFilter
+    role?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   UserWhereUniqueInput: { // input type
     email?: string | null; // String
     id?: string | null; // String
+    login?: string | null; // String
   }
 }
 
 export interface NexusGenEnums {
+  AwareLevels: client.AwareLevels
   OrderByArg: client.OrderByArg
 }
 
@@ -257,9 +739,12 @@ export interface NexusGenRootTypes {
     user: NexusGenRootTypes['User']; // User!
   }
   BatchPayload: client.BatchPayload;
+  Community: client.Community;
   Mutation: {};
   Post: client.Post;
   Query: {};
+  Resident: client.Resident;
+  Unit: client.Unit;
   User: client.User;
   String: string;
   Int: number;
@@ -271,6 +756,27 @@ export interface NexusGenRootTypes {
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
   BooleanFilter: NexusGenInputs['BooleanFilter'];
+  CommunityCreateInput: NexusGenInputs['CommunityCreateInput'];
+  CommunityCreateOneWithoutResidentsInput: NexusGenInputs['CommunityCreateOneWithoutResidentsInput'];
+  CommunityCreateOneWithoutUnitsInput: NexusGenInputs['CommunityCreateOneWithoutUnitsInput'];
+  CommunityCreateOneWithoutUsersInput: NexusGenInputs['CommunityCreateOneWithoutUsersInput'];
+  CommunityCreateWithoutResidentsInput: NexusGenInputs['CommunityCreateWithoutResidentsInput'];
+  CommunityCreateWithoutUnitsInput: NexusGenInputs['CommunityCreateWithoutUnitsInput'];
+  CommunityCreateWithoutUsersInput: NexusGenInputs['CommunityCreateWithoutUsersInput'];
+  CommunityOrderByInput: NexusGenInputs['CommunityOrderByInput'];
+  CommunityUpdateInput: NexusGenInputs['CommunityUpdateInput'];
+  CommunityUpdateManyMutationInput: NexusGenInputs['CommunityUpdateManyMutationInput'];
+  CommunityUpdateOneRequiredWithoutResidentsInput: NexusGenInputs['CommunityUpdateOneRequiredWithoutResidentsInput'];
+  CommunityUpdateOneRequiredWithoutUnitsInput: NexusGenInputs['CommunityUpdateOneRequiredWithoutUnitsInput'];
+  CommunityUpdateOneWithoutUsersInput: NexusGenInputs['CommunityUpdateOneWithoutUsersInput'];
+  CommunityUpdateWithoutResidentsDataInput: NexusGenInputs['CommunityUpdateWithoutResidentsDataInput'];
+  CommunityUpdateWithoutUnitsDataInput: NexusGenInputs['CommunityUpdateWithoutUnitsDataInput'];
+  CommunityUpdateWithoutUsersDataInput: NexusGenInputs['CommunityUpdateWithoutUsersDataInput'];
+  CommunityUpsertWithoutResidentsInput: NexusGenInputs['CommunityUpsertWithoutResidentsInput'];
+  CommunityUpsertWithoutUnitsInput: NexusGenInputs['CommunityUpsertWithoutUnitsInput'];
+  CommunityUpsertWithoutUsersInput: NexusGenInputs['CommunityUpsertWithoutUsersInput'];
+  CommunityWhereInput: NexusGenInputs['CommunityWhereInput'];
+  CommunityWhereUniqueInput: NexusGenInputs['CommunityWhereUniqueInput'];
   DateTimeFilter: NexusGenInputs['DateTimeFilter'];
   NullableStringFilter: NexusGenInputs['NullableStringFilter'];
   PostCreateInput: NexusGenInputs['PostCreateInput'];
@@ -289,18 +795,72 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   PostUpsertWithWhereUniqueWithoutAuthorInput: NexusGenInputs['PostUpsertWithWhereUniqueWithoutAuthorInput'];
   PostWhereInput: NexusGenInputs['PostWhereInput'];
   PostWhereUniqueInput: NexusGenInputs['PostWhereUniqueInput'];
+  ResidentCreateInput: NexusGenInputs['ResidentCreateInput'];
+  ResidentCreateManyWithoutCommunityInput: NexusGenInputs['ResidentCreateManyWithoutCommunityInput'];
+  ResidentCreateManyWithoutUnitInput: NexusGenInputs['ResidentCreateManyWithoutUnitInput'];
+  ResidentCreateWithoutCommunityInput: NexusGenInputs['ResidentCreateWithoutCommunityInput'];
+  ResidentCreateWithoutUnitInput: NexusGenInputs['ResidentCreateWithoutUnitInput'];
+  ResidentFilter: NexusGenInputs['ResidentFilter'];
+  ResidentOrderByInput: NexusGenInputs['ResidentOrderByInput'];
+  ResidentScalarWhereInput: NexusGenInputs['ResidentScalarWhereInput'];
+  ResidentUpdateInput: NexusGenInputs['ResidentUpdateInput'];
+  ResidentUpdateManyDataInput: NexusGenInputs['ResidentUpdateManyDataInput'];
+  ResidentUpdateManyMutationInput: NexusGenInputs['ResidentUpdateManyMutationInput'];
+  ResidentUpdateManyWithWhereNestedInput: NexusGenInputs['ResidentUpdateManyWithWhereNestedInput'];
+  ResidentUpdateManyWithoutCommunityInput: NexusGenInputs['ResidentUpdateManyWithoutCommunityInput'];
+  ResidentUpdateManyWithoutUnitInput: NexusGenInputs['ResidentUpdateManyWithoutUnitInput'];
+  ResidentUpdateWithWhereUniqueWithoutCommunityInput: NexusGenInputs['ResidentUpdateWithWhereUniqueWithoutCommunityInput'];
+  ResidentUpdateWithWhereUniqueWithoutUnitInput: NexusGenInputs['ResidentUpdateWithWhereUniqueWithoutUnitInput'];
+  ResidentUpdateWithoutCommunityDataInput: NexusGenInputs['ResidentUpdateWithoutCommunityDataInput'];
+  ResidentUpdateWithoutUnitDataInput: NexusGenInputs['ResidentUpdateWithoutUnitDataInput'];
+  ResidentUpsertWithWhereUniqueWithoutCommunityInput: NexusGenInputs['ResidentUpsertWithWhereUniqueWithoutCommunityInput'];
+  ResidentUpsertWithWhereUniqueWithoutUnitInput: NexusGenInputs['ResidentUpsertWithWhereUniqueWithoutUnitInput'];
+  ResidentWhereInput: NexusGenInputs['ResidentWhereInput'];
+  ResidentWhereUniqueInput: NexusGenInputs['ResidentWhereUniqueInput'];
   StringFilter: NexusGenInputs['StringFilter'];
+  UnitCreateInput: NexusGenInputs['UnitCreateInput'];
+  UnitCreateManyWithoutCommunityInput: NexusGenInputs['UnitCreateManyWithoutCommunityInput'];
+  UnitCreateOneWithoutResidentsInput: NexusGenInputs['UnitCreateOneWithoutResidentsInput'];
+  UnitCreateWithoutCommunityInput: NexusGenInputs['UnitCreateWithoutCommunityInput'];
+  UnitCreateWithoutResidentsInput: NexusGenInputs['UnitCreateWithoutResidentsInput'];
+  UnitFilter: NexusGenInputs['UnitFilter'];
+  UnitOrderByInput: NexusGenInputs['UnitOrderByInput'];
+  UnitScalarWhereInput: NexusGenInputs['UnitScalarWhereInput'];
+  UnitUpdateInput: NexusGenInputs['UnitUpdateInput'];
+  UnitUpdateManyDataInput: NexusGenInputs['UnitUpdateManyDataInput'];
+  UnitUpdateManyMutationInput: NexusGenInputs['UnitUpdateManyMutationInput'];
+  UnitUpdateManyWithWhereNestedInput: NexusGenInputs['UnitUpdateManyWithWhereNestedInput'];
+  UnitUpdateManyWithoutCommunityInput: NexusGenInputs['UnitUpdateManyWithoutCommunityInput'];
+  UnitUpdateOneRequiredWithoutResidentsInput: NexusGenInputs['UnitUpdateOneRequiredWithoutResidentsInput'];
+  UnitUpdateWithWhereUniqueWithoutCommunityInput: NexusGenInputs['UnitUpdateWithWhereUniqueWithoutCommunityInput'];
+  UnitUpdateWithoutCommunityDataInput: NexusGenInputs['UnitUpdateWithoutCommunityDataInput'];
+  UnitUpdateWithoutResidentsDataInput: NexusGenInputs['UnitUpdateWithoutResidentsDataInput'];
+  UnitUpsertWithWhereUniqueWithoutCommunityInput: NexusGenInputs['UnitUpsertWithWhereUniqueWithoutCommunityInput'];
+  UnitUpsertWithoutResidentsInput: NexusGenInputs['UnitUpsertWithoutResidentsInput'];
+  UnitWhereInput: NexusGenInputs['UnitWhereInput'];
+  UnitWhereUniqueInput: NexusGenInputs['UnitWhereUniqueInput'];
   UserCreateInput: NexusGenInputs['UserCreateInput'];
+  UserCreateManyWithoutPlotInput: NexusGenInputs['UserCreateManyWithoutPlotInput'];
   UserCreateOneWithoutPostsInput: NexusGenInputs['UserCreateOneWithoutPostsInput'];
+  UserCreateWithoutPlotInput: NexusGenInputs['UserCreateWithoutPlotInput'];
   UserCreateWithoutPostsInput: NexusGenInputs['UserCreateWithoutPostsInput'];
+  UserFilter: NexusGenInputs['UserFilter'];
   UserOrderByInput: NexusGenInputs['UserOrderByInput'];
+  UserScalarWhereInput: NexusGenInputs['UserScalarWhereInput'];
   UserUpdateInput: NexusGenInputs['UserUpdateInput'];
+  UserUpdateManyDataInput: NexusGenInputs['UserUpdateManyDataInput'];
   UserUpdateManyMutationInput: NexusGenInputs['UserUpdateManyMutationInput'];
+  UserUpdateManyWithWhereNestedInput: NexusGenInputs['UserUpdateManyWithWhereNestedInput'];
+  UserUpdateManyWithoutPlotInput: NexusGenInputs['UserUpdateManyWithoutPlotInput'];
   UserUpdateOneWithoutPostsInput: NexusGenInputs['UserUpdateOneWithoutPostsInput'];
+  UserUpdateWithWhereUniqueWithoutPlotInput: NexusGenInputs['UserUpdateWithWhereUniqueWithoutPlotInput'];
+  UserUpdateWithoutPlotDataInput: NexusGenInputs['UserUpdateWithoutPlotDataInput'];
   UserUpdateWithoutPostsDataInput: NexusGenInputs['UserUpdateWithoutPostsDataInput'];
+  UserUpsertWithWhereUniqueWithoutPlotInput: NexusGenInputs['UserUpsertWithWhereUniqueWithoutPlotInput'];
   UserUpsertWithoutPostsInput: NexusGenInputs['UserUpsertWithoutPostsInput'];
   UserWhereInput: NexusGenInputs['UserWhereInput'];
   UserWhereUniqueInput: NexusGenInputs['UserWhereUniqueInput'];
+  AwareLevels: NexusGenEnums['AwareLevels'];
   OrderByArg: NexusGenEnums['OrderByArg'];
 }
 
@@ -312,18 +872,41 @@ export interface NexusGenFieldTypes {
   BatchPayload: { // field return type
     count: number; // Int!
   }
+  Community: { // field return type
+    address: string; // String!
+    id: string; // String!
+    name: string; // String!
+    residents: NexusGenRootTypes['Resident'][]; // [Resident!]!
+    units: NexusGenRootTypes['Unit'][]; // [Unit!]!
+    users: NexusGenRootTypes['User'][]; // [User!]!
+  }
   Mutation: { // field return type
+    createOneCommunity: NexusGenRootTypes['Community']; // Community!
     createOnePost: NexusGenRootTypes['Post']; // Post!
+    createOneResident: NexusGenRootTypes['Resident']; // Resident!
+    createOneUnit: NexusGenRootTypes['Unit']; // Unit!
     createOneUser: NexusGenRootTypes['User']; // User!
+    deleteManyCommunity: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyPost: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyResident: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteManyUnit: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     deleteManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    deleteOneCommunity: NexusGenRootTypes['Community'] | null; // Community
     deleteOnePost: NexusGenRootTypes['Post'] | null; // Post
+    deleteOneResident: NexusGenRootTypes['Resident'] | null; // Resident
+    deleteOneUnit: NexusGenRootTypes['Unit'] | null; // Unit
     deleteOneUser: NexusGenRootTypes['User'] | null; // User
     login: NexusGenRootTypes['AuthPayload']; // AuthPayload!
     signup: NexusGenRootTypes['AuthPayload']; // AuthPayload!
+    updateManyCommunity: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyPost: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyResident: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateManyUnit: NexusGenRootTypes['BatchPayload']; // BatchPayload!
     updateManyUser: NexusGenRootTypes['BatchPayload']; // BatchPayload!
+    updateOneCommunity: NexusGenRootTypes['Community'] | null; // Community
     updateOnePost: NexusGenRootTypes['Post'] | null; // Post
+    updateOneResident: NexusGenRootTypes['Resident'] | null; // Resident
+    updateOneUnit: NexusGenRootTypes['Unit'] | null; // Unit
     updateOneUser: NexusGenRootTypes['User'] | null; // User
   }
   Post: { // field return type
@@ -336,59 +919,154 @@ export interface NexusGenFieldTypes {
     updatedAt: any; // DateTime!
   }
   Query: { // field return type
+    communities: NexusGenRootTypes['Community'][]; // [Community!]!
+    community: NexusGenRootTypes['Community'] | null; // Community
     post: NexusGenRootTypes['Post'] | null; // Post
     posts: NexusGenRootTypes['Post'][]; // [Post!]!
+    resident: NexusGenRootTypes['Resident'] | null; // Resident
+    residents: NexusGenRootTypes['Resident'][]; // [Resident!]!
+    unit: NexusGenRootTypes['Unit'] | null; // Unit
+    units: NexusGenRootTypes['Unit'][]; // [Unit!]!
     user: NexusGenRootTypes['User'] | null; // User
     users: NexusGenRootTypes['User'][]; // [User!]!
   }
-  User: { // field return type
-    email: string; // String!
+  Resident: { // field return type
+    age: string; // String!
+    community: NexusGenRootTypes['Community']; // Community!
     id: string; // String!
+    level: NexusGenEnums['AwareLevels']; // AwareLevels!
+    name: string; // String!
+    unit: NexusGenRootTypes['Unit']; // Unit!
+  }
+  Unit: { // field return type
+    building: string; // String!
+    id: string; // String!
+    residents: NexusGenRootTypes['Resident'][]; // [Resident!]!
+    room: string; // String!
+  }
+  User: { // field return type
+    id: string; // String!
+    login: string; // String!
     name: string | null; // String
+    plot: NexusGenRootTypes['Community'] | null; // Community
     posts: NexusGenRootTypes['Post'][]; // [Post!]!
   }
 }
 
 export interface NexusGenArgTypes {
+  Community: {
+    residents: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    units: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    users: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+  }
   Mutation: {
+    createOneCommunity: { // args
+      data: NexusGenInputs['CommunityCreateInput']; // CommunityCreateInput!
+    }
     createOnePost: { // args
       data: NexusGenInputs['PostCreateInput']; // PostCreateInput!
+    }
+    createOneResident: { // args
+      data: NexusGenInputs['ResidentCreateInput']; // ResidentCreateInput!
+    }
+    createOneUnit: { // args
+      data: NexusGenInputs['UnitCreateInput']; // UnitCreateInput!
     }
     createOneUser: { // args
       data: NexusGenInputs['UserCreateInput']; // UserCreateInput!
     }
+    deleteManyCommunity: { // args
+      where?: NexusGenInputs['CommunityWhereInput'] | null; // CommunityWhereInput
+    }
     deleteManyPost: { // args
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+    }
+    deleteManyResident: { // args
+      where?: NexusGenInputs['ResidentWhereInput'] | null; // ResidentWhereInput
+    }
+    deleteManyUnit: { // args
+      where?: NexusGenInputs['UnitWhereInput'] | null; // UnitWhereInput
     }
     deleteManyUser: { // args
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
+    deleteOneCommunity: { // args
+      where: NexusGenInputs['CommunityWhereUniqueInput']; // CommunityWhereUniqueInput!
+    }
     deleteOnePost: { // args
       where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    }
+    deleteOneResident: { // args
+      where: NexusGenInputs['ResidentWhereUniqueInput']; // ResidentWhereUniqueInput!
+    }
+    deleteOneUnit: { // args
+      where: NexusGenInputs['UnitWhereUniqueInput']; // UnitWhereUniqueInput!
     }
     deleteOneUser: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
     login: { // args
-      email: string; // String!
+      login: string; // String!
       password: string; // String!
     }
     signup: { // args
-      email: string; // String!
+      login: string; // String!
       name?: string | null; // String
       password: string; // String!
+    }
+    updateManyCommunity: { // args
+      data: NexusGenInputs['CommunityUpdateManyMutationInput']; // CommunityUpdateManyMutationInput!
+      where?: NexusGenInputs['CommunityWhereInput'] | null; // CommunityWhereInput
     }
     updateManyPost: { // args
       data: NexusGenInputs['PostUpdateManyMutationInput']; // PostUpdateManyMutationInput!
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
     }
+    updateManyResident: { // args
+      data: NexusGenInputs['ResidentUpdateManyMutationInput']; // ResidentUpdateManyMutationInput!
+      where?: NexusGenInputs['ResidentWhereInput'] | null; // ResidentWhereInput
+    }
+    updateManyUnit: { // args
+      data: NexusGenInputs['UnitUpdateManyMutationInput']; // UnitUpdateManyMutationInput!
+      where?: NexusGenInputs['UnitWhereInput'] | null; // UnitWhereInput
+    }
     updateManyUser: { // args
       data: NexusGenInputs['UserUpdateManyMutationInput']; // UserUpdateManyMutationInput!
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
+    updateOneCommunity: { // args
+      data: NexusGenInputs['CommunityUpdateInput']; // CommunityUpdateInput!
+      where: NexusGenInputs['CommunityWhereUniqueInput']; // CommunityWhereUniqueInput!
+    }
     updateOnePost: { // args
       data: NexusGenInputs['PostUpdateInput']; // PostUpdateInput!
       where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    }
+    updateOneResident: { // args
+      data: NexusGenInputs['ResidentUpdateInput']; // ResidentUpdateInput!
+      where: NexusGenInputs['ResidentWhereUniqueInput']; // ResidentWhereUniqueInput!
+    }
+    updateOneUnit: { // args
+      data: NexusGenInputs['UnitUpdateInput']; // UnitUpdateInput!
+      where: NexusGenInputs['UnitWhereUniqueInput']; // UnitWhereUniqueInput!
     }
     updateOneUser: { // args
       data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
@@ -396,6 +1074,18 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
+    communities: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenInputs['CommunityOrderByInput'] | null; // CommunityOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['CommunityWhereInput'] | null; // CommunityWhereInput
+    }
+    community: { // args
+      where: NexusGenInputs['CommunityWhereUniqueInput']; // CommunityWhereUniqueInput!
+    }
     post: { // args
       where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
     }
@@ -407,6 +1097,30 @@ export interface NexusGenArgTypes {
       orderBy?: NexusGenInputs['PostOrderByInput'] | null; // PostOrderByInput
       skip?: number | null; // Int
       where?: NexusGenInputs['PostWhereInput'] | null; // PostWhereInput
+    }
+    resident: { // args
+      where: NexusGenInputs['ResidentWhereUniqueInput']; // ResidentWhereUniqueInput!
+    }
+    residents: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenInputs['ResidentOrderByInput'] | null; // ResidentOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['ResidentWhereInput'] | null; // ResidentWhereInput
+    }
+    unit: { // args
+      where: NexusGenInputs['UnitWhereUniqueInput']; // UnitWhereUniqueInput!
+    }
+    units: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      orderBy?: NexusGenInputs['UnitOrderByInput'] | null; // UnitOrderByInput
+      skip?: number | null; // Int
+      where?: NexusGenInputs['UnitWhereInput'] | null; // UnitWhereInput
     }
     user: { // args
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
@@ -421,6 +1135,15 @@ export interface NexusGenArgTypes {
       where?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     }
   }
+  Unit: {
+    residents: { // args
+      after?: string | null; // String
+      before?: string | null; // String
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+  }
 }
 
 export interface NexusGenAbstractResolveReturnTypes {
@@ -428,11 +1151,11 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "AuthPayload" | "BatchPayload" | "Mutation" | "Post" | "Query" | "User";
+export type NexusGenObjectNames = "AuthPayload" | "BatchPayload" | "Community" | "Mutation" | "Post" | "Query" | "Resident" | "Unit" | "User";
 
-export type NexusGenInputNames = "BooleanFilter" | "DateTimeFilter" | "NullableStringFilter" | "PostCreateInput" | "PostCreateManyWithoutAuthorInput" | "PostCreateWithoutAuthorInput" | "PostFilter" | "PostOrderByInput" | "PostScalarWhereInput" | "PostUpdateInput" | "PostUpdateManyDataInput" | "PostUpdateManyMutationInput" | "PostUpdateManyWithWhereNestedInput" | "PostUpdateManyWithoutAuthorInput" | "PostUpdateWithWhereUniqueWithoutAuthorInput" | "PostUpdateWithoutAuthorDataInput" | "PostUpsertWithWhereUniqueWithoutAuthorInput" | "PostWhereInput" | "PostWhereUniqueInput" | "StringFilter" | "UserCreateInput" | "UserCreateOneWithoutPostsInput" | "UserCreateWithoutPostsInput" | "UserOrderByInput" | "UserUpdateInput" | "UserUpdateManyMutationInput" | "UserUpdateOneWithoutPostsInput" | "UserUpdateWithoutPostsDataInput" | "UserUpsertWithoutPostsInput" | "UserWhereInput" | "UserWhereUniqueInput";
+export type NexusGenInputNames = "BooleanFilter" | "CommunityCreateInput" | "CommunityCreateOneWithoutResidentsInput" | "CommunityCreateOneWithoutUnitsInput" | "CommunityCreateOneWithoutUsersInput" | "CommunityCreateWithoutResidentsInput" | "CommunityCreateWithoutUnitsInput" | "CommunityCreateWithoutUsersInput" | "CommunityOrderByInput" | "CommunityUpdateInput" | "CommunityUpdateManyMutationInput" | "CommunityUpdateOneRequiredWithoutResidentsInput" | "CommunityUpdateOneRequiredWithoutUnitsInput" | "CommunityUpdateOneWithoutUsersInput" | "CommunityUpdateWithoutResidentsDataInput" | "CommunityUpdateWithoutUnitsDataInput" | "CommunityUpdateWithoutUsersDataInput" | "CommunityUpsertWithoutResidentsInput" | "CommunityUpsertWithoutUnitsInput" | "CommunityUpsertWithoutUsersInput" | "CommunityWhereInput" | "CommunityWhereUniqueInput" | "DateTimeFilter" | "NullableStringFilter" | "PostCreateInput" | "PostCreateManyWithoutAuthorInput" | "PostCreateWithoutAuthorInput" | "PostFilter" | "PostOrderByInput" | "PostScalarWhereInput" | "PostUpdateInput" | "PostUpdateManyDataInput" | "PostUpdateManyMutationInput" | "PostUpdateManyWithWhereNestedInput" | "PostUpdateManyWithoutAuthorInput" | "PostUpdateWithWhereUniqueWithoutAuthorInput" | "PostUpdateWithoutAuthorDataInput" | "PostUpsertWithWhereUniqueWithoutAuthorInput" | "PostWhereInput" | "PostWhereUniqueInput" | "ResidentCreateInput" | "ResidentCreateManyWithoutCommunityInput" | "ResidentCreateManyWithoutUnitInput" | "ResidentCreateWithoutCommunityInput" | "ResidentCreateWithoutUnitInput" | "ResidentFilter" | "ResidentOrderByInput" | "ResidentScalarWhereInput" | "ResidentUpdateInput" | "ResidentUpdateManyDataInput" | "ResidentUpdateManyMutationInput" | "ResidentUpdateManyWithWhereNestedInput" | "ResidentUpdateManyWithoutCommunityInput" | "ResidentUpdateManyWithoutUnitInput" | "ResidentUpdateWithWhereUniqueWithoutCommunityInput" | "ResidentUpdateWithWhereUniqueWithoutUnitInput" | "ResidentUpdateWithoutCommunityDataInput" | "ResidentUpdateWithoutUnitDataInput" | "ResidentUpsertWithWhereUniqueWithoutCommunityInput" | "ResidentUpsertWithWhereUniqueWithoutUnitInput" | "ResidentWhereInput" | "ResidentWhereUniqueInput" | "StringFilter" | "UnitCreateInput" | "UnitCreateManyWithoutCommunityInput" | "UnitCreateOneWithoutResidentsInput" | "UnitCreateWithoutCommunityInput" | "UnitCreateWithoutResidentsInput" | "UnitFilter" | "UnitOrderByInput" | "UnitScalarWhereInput" | "UnitUpdateInput" | "UnitUpdateManyDataInput" | "UnitUpdateManyMutationInput" | "UnitUpdateManyWithWhereNestedInput" | "UnitUpdateManyWithoutCommunityInput" | "UnitUpdateOneRequiredWithoutResidentsInput" | "UnitUpdateWithWhereUniqueWithoutCommunityInput" | "UnitUpdateWithoutCommunityDataInput" | "UnitUpdateWithoutResidentsDataInput" | "UnitUpsertWithWhereUniqueWithoutCommunityInput" | "UnitUpsertWithoutResidentsInput" | "UnitWhereInput" | "UnitWhereUniqueInput" | "UserCreateInput" | "UserCreateManyWithoutPlotInput" | "UserCreateOneWithoutPostsInput" | "UserCreateWithoutPlotInput" | "UserCreateWithoutPostsInput" | "UserFilter" | "UserOrderByInput" | "UserScalarWhereInput" | "UserUpdateInput" | "UserUpdateManyDataInput" | "UserUpdateManyMutationInput" | "UserUpdateManyWithWhereNestedInput" | "UserUpdateManyWithoutPlotInput" | "UserUpdateOneWithoutPostsInput" | "UserUpdateWithWhereUniqueWithoutPlotInput" | "UserUpdateWithoutPlotDataInput" | "UserUpdateWithoutPostsDataInput" | "UserUpsertWithWhereUniqueWithoutPlotInput" | "UserUpsertWithoutPostsInput" | "UserWhereInput" | "UserWhereUniqueInput";
 
-export type NexusGenEnumNames = "OrderByArg";
+export type NexusGenEnumNames = "AwareLevels" | "OrderByArg";
 
 export type NexusGenInterfaceNames = never;
 
