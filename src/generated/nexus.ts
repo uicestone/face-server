@@ -908,6 +908,10 @@ export interface NexusGenFieldTypes {
     updateOneResident: NexusGenRootTypes['Resident'] | null; // Resident
     updateOneUnit: NexusGenRootTypes['Unit'] | null; // Unit
     updateOneUser: NexusGenRootTypes['User'] | null; // User
+    upsertOnePost: NexusGenRootTypes['Post']; // Post!
+    upsertOneResident: NexusGenRootTypes['Resident']; // Resident!
+    upsertOneUnit: NexusGenRootTypes['Unit']; // Unit!
+    upsertOneUser: NexusGenRootTypes['User']; // User!
   }
   Post: { // field return type
     author: NexusGenRootTypes['User'] | null; // User
@@ -1070,6 +1074,26 @@ export interface NexusGenArgTypes {
     }
     updateOneUser: { // args
       data: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
+      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
+    }
+    upsertOnePost: { // args
+      create: NexusGenInputs['PostCreateInput']; // PostCreateInput!
+      update: NexusGenInputs['PostUpdateInput']; // PostUpdateInput!
+      where: NexusGenInputs['PostWhereUniqueInput']; // PostWhereUniqueInput!
+    }
+    upsertOneResident: { // args
+      create: NexusGenInputs['ResidentCreateInput']; // ResidentCreateInput!
+      update: NexusGenInputs['ResidentUpdateInput']; // ResidentUpdateInput!
+      where: NexusGenInputs['ResidentWhereUniqueInput']; // ResidentWhereUniqueInput!
+    }
+    upsertOneUnit: { // args
+      create: NexusGenInputs['UnitCreateInput']; // UnitCreateInput!
+      update: NexusGenInputs['UnitUpdateInput']; // UnitUpdateInput!
+      where: NexusGenInputs['UnitWhereUniqueInput']; // UnitWhereUniqueInput!
+    }
+    upsertOneUser: { // args
+      create: NexusGenInputs['UserCreateInput']; // UserCreateInput!
+      update: NexusGenInputs['UserUpdateInput']; // UserUpdateInput!
       where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
   }

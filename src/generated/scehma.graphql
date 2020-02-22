@@ -220,6 +220,10 @@ type Mutation {
   updateOneResident(data: ResidentUpdateInput!, where: ResidentWhereUniqueInput!): Resident
   updateOneUnit(data: UnitUpdateInput!, where: UnitWhereUniqueInput!): Unit
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
+  upsertOneResident(create: ResidentCreateInput!, update: ResidentUpdateInput!, where: ResidentWhereUniqueInput!): Resident!
+  upsertOneUnit(create: UnitCreateInput!, update: UnitUpdateInput!, where: UnitWhereUniqueInput!): Unit!
+  upsertOneUser(create: UserCreateInput!, update: UserUpdateInput!, where: UserWhereUniqueInput!): User!
 }
 
 input NullableStringFilter {

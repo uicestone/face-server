@@ -10,7 +10,7 @@ export const Post = objectType({
     t.model.title()
     t.model.content()
     t.model.author()
-  },
+  }
 })
 
 export const PostQuery = extendType({
@@ -20,18 +20,19 @@ export const PostQuery = extendType({
     t.crud.posts({
       filtering: true,
       pagination: true,
-      ordering: true,
+      ordering: true
     })
-  },
+  }
 })
 
 export const PostMutation = extendType({
   type: "Mutation",
   definition(t) {
+    t.crud.upsertOnePost()
     t.crud.createOnePost()
     t.crud.deleteOnePost()
     t.crud.deleteManyPost()
     t.crud.updateManyPost()
     t.crud.updateOnePost()
-  },
+  }
 })

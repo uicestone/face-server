@@ -37,6 +37,7 @@ export const userQuery = extendType({
 export const userMutation = extendType({
   type: "Mutation",
   definition(t) {
+    t.crud.upsertOneUser()
     t.crud.createOneUser()
     t.crud.deleteOneUser()
     t.crud.deleteManyUser()

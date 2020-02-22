@@ -27,6 +27,7 @@ export const CommunityQuery = extendType({
 export const CommunityMutation = extendType({
   type: "Mutation",
   definition(t) {
+    t.crud.upsertOneCommunity()
     t.crud.createOneCommunity()
     t.crud.deleteOneCommunity()
     t.crud.deleteManyCommunity()

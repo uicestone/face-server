@@ -27,6 +27,7 @@ export const ResidentQuery = extendType({
 export const ResidentMutation = extendType({
   type: "Mutation",
   definition(t) {
+    t.crud.upsertOneResident()
     t.crud.createOneResident()
     t.crud.deleteOneResident()
     t.crud.deleteManyResident()

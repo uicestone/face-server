@@ -26,6 +26,7 @@ export const UnitQuery = extendType({
 export const UnitMutation = extendType({
   type: "Mutation",
   definition(t) {
+    t.crud.upsertOneUnit()
     t.crud.createOneUnit()
     t.crud.deleteOneUnit()
     t.crud.deleteManyUnit()
