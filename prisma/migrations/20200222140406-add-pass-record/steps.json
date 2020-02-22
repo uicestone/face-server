@@ -1,0 +1,95 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateEnum",
+      "enum": "Directions",
+      "values": [
+        "IN",
+        "OUT"
+      ]
+    },
+    {
+      "tag": "CreateModel",
+      "model": "PassRecord"
+    },
+    {
+      "tag": "CreateField",
+      "model": "PassRecord",
+      "field": "id",
+      "type": "String",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "PassRecord",
+          "field": "id"
+        },
+        "directive": "default"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "PassRecord",
+          "field": "id"
+        },
+        "directive": "default"
+      },
+      "argument": "",
+      "value": "cuid()"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "PassRecord",
+          "field": "id"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateField",
+      "model": "PassRecord",
+      "field": "resident",
+      "type": "Resident",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "PassRecord",
+      "field": "date",
+      "type": "DateTime",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "PassRecord",
+      "field": "direction",
+      "type": "Directions",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "PassRecord",
+      "field": "allow",
+      "type": "Boolean",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "PassRecord",
+      "field": "community",
+      "type": "Community",
+      "arity": "Required"
+    }
+  ]
+}
