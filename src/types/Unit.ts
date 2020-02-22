@@ -6,8 +6,8 @@ export const Unit = objectType({
     t.model.id()
     t.model.building()
     t.model.room()
-    t.model.Unit()
     t.model.residents()
+    t.model.community()
   }
 })
 

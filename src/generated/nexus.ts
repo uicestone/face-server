@@ -945,6 +945,7 @@ export interface NexusGenFieldTypes {
   }
   Unit: { // field return type
     building: string; // String!
+    community: NexusGenRootTypes['Community']; // Community!
     id: string; // String!
     residents: NexusGenRootTypes['Resident'][]; // [Resident!]!
     room: string; // String!
