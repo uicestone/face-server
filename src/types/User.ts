@@ -3,6 +3,7 @@ import { compare, hash } from "bcryptjs"
 import { sign } from "jsonwebtoken"
 import { stringArg } from "nexus"
 import { APP_SECRET } from "../utils"
+import { getUser } from "../utils/index"
 
 export const AuthPayload = objectType({
   name: "AuthPayload",
@@ -19,7 +20,7 @@ export const User = objectType({
     t.model.name()
     t.model.login()
     t.model.posts({ pagination: false })
-    t.model.plot()
+    t.model.community()
   }
 })
 
@@ -31,6 +32,19 @@ export const userQuery = extendType({
       filtering: true,
       pagination: true,
       ordering: true
+    })
+
+    t.field("me", {
+      type: "User",
+      resolve: async (_, args, ctx) => {
+        const authPayload = getUser(ctx)
+        const user = await ctx.prisma.user.findOne({
+          where: {
+            id: authPayload.userId
+          }
+        })
+        return user
+      }
     })
   }
 })

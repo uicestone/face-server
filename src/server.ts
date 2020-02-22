@@ -25,7 +25,7 @@ server.express
   .post("/tx/SearchFaces", async (req, res) => {
     const { Image } = req.body
     try {
-      const result = await txIaiService.SearchFaces({ Image })
+      const result = await txIaiService.SearchPersons({ Image })
       console.log(result)
       res.json(result)
     } catch (error) {
@@ -46,30 +46,30 @@ server.express
     const { Image, Gender, PersonId = uuid.v4(), PersonName, PersonLevel, PersonAge, UnidId, CommunityId } = req.body
     try {
       const result = await txIaiService.CreatePerson({ Image, Gender, PersonId, PersonName })
-      const resident = await prisma.resident.upsert({
-        where: {
-          id: PersonId
-        },
-        update: {},
-        create: {
-          id: PersonId,
-          level: PersonLevel,
-          name: PersonName,
-          age: PersonAge,
-          unit: {
-            connect: UnidId
-          },
-          community: {
-            connect: CommunityId
-          }
-        }
-      })
-      if (result.FaceId) {
+      // const resident = await prisma.resident.upsert({
+      //   where: {
+      //     id: PersonId
+      //   },
+      //   update: {},
+      //   create: {
+      //     id: PersonId,
+      //     level: PersonLevel,
+      //     name: PersonName,
+      //     age: PersonAge,
+      //     unit: {
+      //       connect: UnidId
+      //     },
+      //     community: {
+      //       connect: CommunityId
+      //     }
+      //   }
+      // })
+      if (!result.SimilarPersonId) {
         const img = Image.split(",")[1]
-        await fs.promises.writeFile(process.cwd() + `/static/${result.FaceId}.png`, img, { encoding: "base64" })
+        await fs.promises.writeFile(process.cwd() + `/static/${PersonId}.png`, img, { encoding: "base64" })
       }
 
-      res.json({ resident, person: result })
+      res.json({ person: result })
     } catch (error) {
       throw new Error(error)
     }
