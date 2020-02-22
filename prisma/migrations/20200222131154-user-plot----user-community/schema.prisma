@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = "postgres://face:1000+faces@stirad.com:8432/face"
+  url = "***"
 }
 
 generator client {
@@ -42,25 +42,12 @@ enum AwareLevels {
   BLUE GREEN YELLOW RED
 }
 
-enum Directions {
-  IN OUT
-}
-
 model Resident {
   id        String      @id
   level     AwareLevels
   name      String
   age       String
   unit      Unit
-  community Community
-}
-
-model PassRecord {
-  id        String     @default(cuid()) @id
-  resident  Resident
-  date      DateTime
-  direction Directions
-  allow     Boolean
   community Community
 }
 

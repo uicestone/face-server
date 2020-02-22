@@ -14,8 +14,6 @@ const server = new GraphQLServer({
   middlewares: [permissions]
 })
 
-prisma.user.findMany().then(console.log)
-
 server.express
   .use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*")
