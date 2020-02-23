@@ -9,7 +9,8 @@
     "generate:nexus": "ts-node --transpile-only src/schema",
     "dev": "ts-node-dev --no-notify --respawn --transpileOnly src/server",
     "seed": "ts-node prisma/seed",
-    "migrate": "prisma2 migrate save --experimental"
+    "migrate": "prisma2 migrate save --experimental",
+    "migrate:up": "prisma2 migrate up --experimental"
   },
   "dependencies": {
     "@prisma/client": "^2.0.0-preview022",
