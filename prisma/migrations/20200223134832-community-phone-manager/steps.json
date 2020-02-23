@@ -1,0 +1,50 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Community",
+      "field": "phone",
+      "type": "String",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Community",
+      "field": "manager",
+      "type": "User",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Community",
+          "field": "manager"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Community",
+          "field": "manager"
+        },
+        "directive": "relation"
+      },
+      "argument": "",
+      "value": "\"manager\""
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Community",
+      "field": "address",
+      "arity": "Optional"
+    }
+  ]
+}

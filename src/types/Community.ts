@@ -4,8 +4,10 @@ export const Community = objectType({
   name: "Community",
   definition(t) {
     t.model.id()
+    t.model.phone()
     t.model.address()
     t.model.name()
+    t.model.manager()
     t.model.users()
     t.model.residents()
     t.model.units()

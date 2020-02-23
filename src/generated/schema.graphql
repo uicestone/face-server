@@ -24,22 +24,31 @@ input BooleanFilter {
 }
 
 type Community {
-  address: String!
+  address: String
   id: String!
+  manager: User
   name: String!
+  phone: String
   residents(after: ResidentWhereUniqueInput, before: ResidentWhereUniqueInput, first: Int, last: Int, skip: Int): [Resident!]!
   units(after: UnitWhereUniqueInput, before: UnitWhereUniqueInput, first: Int, last: Int, skip: Int): [Unit!]!
   users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int, skip: Int): [User!]!
 }
 
 input CommunityCreateInput {
-  address: String!
+  address: String
   id: String
+  manager: UserCreateOneWithoutCommunitiesInput
   name: String!
   passRecords: PassRecordCreateManyWithoutCommunityInput
+  phone: String
   residents: ResidentCreateManyWithoutCommunityInput
   units: UnitCreateManyWithoutCommunityInput
   users: UserCreateManyWithoutCommunityInput
+}
+
+input CommunityCreateManyWithoutManagerInput {
+  connect: [CommunityWhereUniqueInput!]
+  create: [CommunityCreateWithoutManagerInput!]
 }
 
 input CommunityCreateOneWithoutPassRecordsInput {
@@ -62,62 +71,129 @@ input CommunityCreateOneWithoutUsersInput {
   create: CommunityCreateWithoutUsersInput
 }
 
-input CommunityCreateWithoutPassRecordsInput {
-  address: String!
+input CommunityCreateWithoutManagerInput {
+  address: String
   id: String
   name: String!
+  passRecords: PassRecordCreateManyWithoutCommunityInput
+  phone: String
+  residents: ResidentCreateManyWithoutCommunityInput
+  units: UnitCreateManyWithoutCommunityInput
+  users: UserCreateManyWithoutCommunityInput
+}
+
+input CommunityCreateWithoutPassRecordsInput {
+  address: String
+  id: String
+  manager: UserCreateOneWithoutCommunitiesInput
+  name: String!
+  phone: String
   residents: ResidentCreateManyWithoutCommunityInput
   units: UnitCreateManyWithoutCommunityInput
   users: UserCreateManyWithoutCommunityInput
 }
 
 input CommunityCreateWithoutResidentsInput {
-  address: String!
+  address: String
   id: String
+  manager: UserCreateOneWithoutCommunitiesInput
   name: String!
   passRecords: PassRecordCreateManyWithoutCommunityInput
+  phone: String
   units: UnitCreateManyWithoutCommunityInput
   users: UserCreateManyWithoutCommunityInput
 }
 
 input CommunityCreateWithoutUnitsInput {
-  address: String!
+  address: String
   id: String
+  manager: UserCreateOneWithoutCommunitiesInput
   name: String!
   passRecords: PassRecordCreateManyWithoutCommunityInput
+  phone: String
   residents: ResidentCreateManyWithoutCommunityInput
   users: UserCreateManyWithoutCommunityInput
 }
 
 input CommunityCreateWithoutUsersInput {
-  address: String!
+  address: String
   id: String
+  manager: UserCreateOneWithoutCommunitiesInput
   name: String!
   passRecords: PassRecordCreateManyWithoutCommunityInput
+  phone: String
   residents: ResidentCreateManyWithoutCommunityInput
   units: UnitCreateManyWithoutCommunityInput
+}
+
+input CommunityFilter {
+  every: CommunityWhereInput
+  none: CommunityWhereInput
+  some: CommunityWhereInput
 }
 
 input CommunityOrderByInput {
   address: OrderByArg
   id: OrderByArg
   name: OrderByArg
+  phone: OrderByArg
+}
+
+input CommunityScalarWhereInput {
+  address: NullableStringFilter
+  AND: [CommunityScalarWhereInput!]
+  id: StringFilter
+  name: StringFilter
+  NOT: [CommunityScalarWhereInput!]
+  OR: [CommunityScalarWhereInput!]
+  passRecords: PassRecordFilter
+  phone: NullableStringFilter
+  residents: ResidentFilter
+  units: UnitFilter
+  users: UserFilter
 }
 
 input CommunityUpdateInput {
   address: String
   id: String
+  manager: UserUpdateOneWithoutCommunitiesInput
   name: String
   passRecords: PassRecordUpdateManyWithoutCommunityInput
+  phone: String
   residents: ResidentUpdateManyWithoutCommunityInput
   units: UnitUpdateManyWithoutCommunityInput
   users: UserUpdateManyWithoutCommunityInput
+}
+
+input CommunityUpdateManyDataInput {
+  address: String
+  id: String
+  name: String
+  phone: String
 }
 
 input CommunityUpdateManyMutationInput {
   address: String
   id: String
   name: String
+  phone: String
+}
+
+input CommunityUpdateManyWithoutManagerInput {
+  connect: [CommunityWhereUniqueInput!]
+  create: [CommunityCreateWithoutManagerInput!]
+  delete: [CommunityWhereUniqueInput!]
+  deleteMany: [CommunityScalarWhereInput!]
+  disconnect: [CommunityWhereUniqueInput!]
+  set: [CommunityWhereUniqueInput!]
+  update: [CommunityUpdateWithWhereUniqueWithoutManagerInput!]
+  updateMany: [CommunityUpdateManyWithWhereNestedInput!]
+  upsert: [CommunityUpsertWithWhereUniqueWithoutManagerInput!]
+}
+
+input CommunityUpdateManyWithWhereNestedInput {
+  data: CommunityUpdateManyDataInput!
+  where: CommunityScalarWhereInput!
 }
 
 input CommunityUpdateOneRequiredWithoutPassRecordsInput {
@@ -150,10 +226,23 @@ input CommunityUpdateOneWithoutUsersInput {
   upsert: CommunityUpsertWithoutUsersInput
 }
 
-input CommunityUpdateWithoutPassRecordsDataInput {
+input CommunityUpdateWithoutManagerDataInput {
   address: String
   id: String
   name: String
+  passRecords: PassRecordUpdateManyWithoutCommunityInput
+  phone: String
+  residents: ResidentUpdateManyWithoutCommunityInput
+  units: UnitUpdateManyWithoutCommunityInput
+  users: UserUpdateManyWithoutCommunityInput
+}
+
+input CommunityUpdateWithoutPassRecordsDataInput {
+  address: String
+  id: String
+  manager: UserUpdateOneWithoutCommunitiesInput
+  name: String
+  phone: String
   residents: ResidentUpdateManyWithoutCommunityInput
   units: UnitUpdateManyWithoutCommunityInput
   users: UserUpdateManyWithoutCommunityInput
@@ -162,8 +251,10 @@ input CommunityUpdateWithoutPassRecordsDataInput {
 input CommunityUpdateWithoutResidentsDataInput {
   address: String
   id: String
+  manager: UserUpdateOneWithoutCommunitiesInput
   name: String
   passRecords: PassRecordUpdateManyWithoutCommunityInput
+  phone: String
   units: UnitUpdateManyWithoutCommunityInput
   users: UserUpdateManyWithoutCommunityInput
 }
@@ -171,8 +262,10 @@ input CommunityUpdateWithoutResidentsDataInput {
 input CommunityUpdateWithoutUnitsDataInput {
   address: String
   id: String
+  manager: UserUpdateOneWithoutCommunitiesInput
   name: String
   passRecords: PassRecordUpdateManyWithoutCommunityInput
+  phone: String
   residents: ResidentUpdateManyWithoutCommunityInput
   users: UserUpdateManyWithoutCommunityInput
 }
@@ -180,10 +273,17 @@ input CommunityUpdateWithoutUnitsDataInput {
 input CommunityUpdateWithoutUsersDataInput {
   address: String
   id: String
+  manager: UserUpdateOneWithoutCommunitiesInput
   name: String
   passRecords: PassRecordUpdateManyWithoutCommunityInput
+  phone: String
   residents: ResidentUpdateManyWithoutCommunityInput
   units: UnitUpdateManyWithoutCommunityInput
+}
+
+input CommunityUpdateWithWhereUniqueWithoutManagerInput {
+  data: CommunityUpdateWithoutManagerDataInput!
+  where: CommunityWhereUniqueInput!
 }
 
 input CommunityUpsertWithoutPassRecordsInput {
@@ -206,14 +306,22 @@ input CommunityUpsertWithoutUsersInput {
   update: CommunityUpdateWithoutUsersDataInput!
 }
 
+input CommunityUpsertWithWhereUniqueWithoutManagerInput {
+  create: CommunityCreateWithoutManagerInput!
+  update: CommunityUpdateWithoutManagerDataInput!
+  where: CommunityWhereUniqueInput!
+}
+
 input CommunityWhereInput {
-  address: StringFilter
+  address: NullableStringFilter
   AND: [CommunityWhereInput!]
   id: StringFilter
+  manager: UserWhereInput
   name: StringFilter
   NOT: [CommunityWhereInput!]
   OR: [CommunityWhereInput!]
   passRecords: PassRecordFilter
+  phone: NullableStringFilter
   residents: ResidentFilter
   units: UnitFilter
   users: UserFilter
@@ -316,7 +424,7 @@ input PassRecordCreateInput {
   date: DateTime!
   direction: Directions!
   id: String
-  resident: ResidentCreateOneWithoutPassRecordsInput!
+  resident: ResidentCreateOneWithoutPassrecordsInput!
 }
 
 input PassRecordCreateManyWithoutCommunityInput {
@@ -334,7 +442,7 @@ input PassRecordCreateWithoutCommunityInput {
   date: DateTime!
   direction: Directions!
   id: String
-  resident: ResidentCreateOneWithoutPassRecordsInput!
+  resident: ResidentCreateOneWithoutPassrecordsInput!
 }
 
 input PassRecordCreateWithoutResidentInput {
@@ -374,7 +482,7 @@ input PassRecordUpdateInput {
   date: DateTime
   direction: Directions
   id: String
-  resident: ResidentUpdateOneRequiredWithoutPassRecordsInput
+  resident: ResidentUpdateOneRequiredWithoutPassrecordsInput
 }
 
 input PassRecordUpdateManyDataInput {
@@ -425,7 +533,7 @@ input PassRecordUpdateWithoutCommunityDataInput {
   date: DateTime
   direction: Directions
   id: String
-  resident: ResidentUpdateOneRequiredWithoutPassRecordsInput
+  resident: ResidentUpdateOneRequiredWithoutPassrecordsInput
 }
 
 input PassRecordUpdateWithoutResidentDataInput {
@@ -639,7 +747,6 @@ type Resident {
   id: String!
   level: AwareLevels!
   name: String!
-  passRecords(after: PassRecordWhereUniqueInput, before: PassRecordWhereUniqueInput, first: Int, last: Int, orderBy: PassRecordOrderByInput, skip: Int, where: PassRecordWhereInput): [PassRecord!]!
   unit: Unit!
 }
 
@@ -649,7 +756,7 @@ input ResidentCreateInput {
   id: String!
   level: AwareLevels!
   name: String!
-  passRecords: PassRecordCreateManyWithoutResidentInput
+  passrecords: PassRecordCreateManyWithoutResidentInput
   unit: UnitCreateOneWithoutResidentsInput!
 }
 
@@ -663,9 +770,9 @@ input ResidentCreateManyWithoutUnitInput {
   create: [ResidentCreateWithoutUnitInput!]
 }
 
-input ResidentCreateOneWithoutPassRecordsInput {
+input ResidentCreateOneWithoutPassrecordsInput {
   connect: ResidentWhereUniqueInput
-  create: ResidentCreateWithoutPassRecordsInput
+  create: ResidentCreateWithoutPassrecordsInput
 }
 
 input ResidentCreateWithoutCommunityInput {
@@ -673,11 +780,11 @@ input ResidentCreateWithoutCommunityInput {
   id: String!
   level: AwareLevels!
   name: String!
-  passRecords: PassRecordCreateManyWithoutResidentInput
+  passrecords: PassRecordCreateManyWithoutResidentInput
   unit: UnitCreateOneWithoutResidentsInput!
 }
 
-input ResidentCreateWithoutPassRecordsInput {
+input ResidentCreateWithoutPassrecordsInput {
   age: String!
   community: CommunityCreateOneWithoutResidentsInput!
   id: String!
@@ -692,7 +799,7 @@ input ResidentCreateWithoutUnitInput {
   id: String!
   level: AwareLevels!
   name: String!
-  passRecords: PassRecordCreateManyWithoutResidentInput
+  passrecords: PassRecordCreateManyWithoutResidentInput
 }
 
 input ResidentFilter {
@@ -716,7 +823,7 @@ input ResidentScalarWhereInput {
   name: StringFilter
   NOT: [ResidentScalarWhereInput!]
   OR: [ResidentScalarWhereInput!]
-  passRecords: PassRecordFilter
+  passrecords: PassRecordFilter
 }
 
 input ResidentUpdateInput {
@@ -725,7 +832,7 @@ input ResidentUpdateInput {
   id: String
   level: AwareLevels
   name: String
-  passRecords: PassRecordUpdateManyWithoutResidentInput
+  passrecords: PassRecordUpdateManyWithoutResidentInput
   unit: UnitUpdateOneRequiredWithoutResidentsInput
 }
 
@@ -772,11 +879,11 @@ input ResidentUpdateManyWithWhereNestedInput {
   where: ResidentScalarWhereInput!
 }
 
-input ResidentUpdateOneRequiredWithoutPassRecordsInput {
+input ResidentUpdateOneRequiredWithoutPassrecordsInput {
   connect: ResidentWhereUniqueInput
-  create: ResidentCreateWithoutPassRecordsInput
-  update: ResidentUpdateWithoutPassRecordsDataInput
-  upsert: ResidentUpsertWithoutPassRecordsInput
+  create: ResidentCreateWithoutPassrecordsInput
+  update: ResidentUpdateWithoutPassrecordsDataInput
+  upsert: ResidentUpsertWithoutPassrecordsInput
 }
 
 input ResidentUpdateWithoutCommunityDataInput {
@@ -784,11 +891,11 @@ input ResidentUpdateWithoutCommunityDataInput {
   id: String
   level: AwareLevels
   name: String
-  passRecords: PassRecordUpdateManyWithoutResidentInput
+  passrecords: PassRecordUpdateManyWithoutResidentInput
   unit: UnitUpdateOneRequiredWithoutResidentsInput
 }
 
-input ResidentUpdateWithoutPassRecordsDataInput {
+input ResidentUpdateWithoutPassrecordsDataInput {
   age: String
   community: CommunityUpdateOneRequiredWithoutResidentsInput
   id: String
@@ -803,7 +910,7 @@ input ResidentUpdateWithoutUnitDataInput {
   id: String
   level: AwareLevels
   name: String
-  passRecords: PassRecordUpdateManyWithoutResidentInput
+  passrecords: PassRecordUpdateManyWithoutResidentInput
 }
 
 input ResidentUpdateWithWhereUniqueWithoutCommunityInput {
@@ -816,9 +923,9 @@ input ResidentUpdateWithWhereUniqueWithoutUnitInput {
   where: ResidentWhereUniqueInput!
 }
 
-input ResidentUpsertWithoutPassRecordsInput {
-  create: ResidentCreateWithoutPassRecordsInput!
-  update: ResidentUpdateWithoutPassRecordsDataInput!
+input ResidentUpsertWithoutPassrecordsInput {
+  create: ResidentCreateWithoutPassrecordsInput!
+  update: ResidentUpdateWithoutPassrecordsDataInput!
 }
 
 input ResidentUpsertWithWhereUniqueWithoutCommunityInput {
@@ -842,7 +949,7 @@ input ResidentWhereInput {
   name: StringFilter
   NOT: [ResidentWhereInput!]
   OR: [ResidentWhereInput!]
-  passRecords: PassRecordFilter
+  passrecords: PassRecordFilter
   unit: UnitWhereInput
 }
 
@@ -1024,6 +1131,7 @@ type User {
 }
 
 input UserCreateInput {
+  communities: CommunityCreateManyWithoutManagerInput
   community: CommunityCreateOneWithoutUsersInput
   email: String
   id: String
@@ -1039,12 +1147,29 @@ input UserCreateManyWithoutCommunityInput {
   create: [UserCreateWithoutCommunityInput!]
 }
 
+input UserCreateOneWithoutCommunitiesInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutCommunitiesInput
+}
+
 input UserCreateOneWithoutPostsInput {
   connect: UserWhereUniqueInput
   create: UserCreateWithoutPostsInput
 }
 
+input UserCreateWithoutCommunitiesInput {
+  community: CommunityCreateOneWithoutUsersInput
+  email: String
+  id: String
+  login: String!
+  name: String
+  password: String!
+  posts: PostCreateManyWithoutAuthorInput
+  role: String!
+}
+
 input UserCreateWithoutCommunityInput {
+  communities: CommunityCreateManyWithoutManagerInput
   email: String
   id: String
   login: String!
@@ -1055,6 +1180,7 @@ input UserCreateWithoutCommunityInput {
 }
 
 input UserCreateWithoutPostsInput {
+  communities: CommunityCreateManyWithoutManagerInput
   community: CommunityCreateOneWithoutUsersInput
   email: String
   id: String
@@ -1081,6 +1207,7 @@ input UserOrderByInput {
 
 input UserScalarWhereInput {
   AND: [UserScalarWhereInput!]
+  communities: CommunityFilter
   email: NullableStringFilter
   id: StringFilter
   login: StringFilter
@@ -1093,6 +1220,7 @@ input UserScalarWhereInput {
 }
 
 input UserUpdateInput {
+  communities: CommunityUpdateManyWithoutManagerInput
   community: CommunityUpdateOneWithoutUsersInput
   email: String
   id: String
@@ -1138,6 +1266,15 @@ input UserUpdateManyWithWhereNestedInput {
   where: UserScalarWhereInput!
 }
 
+input UserUpdateOneWithoutCommunitiesInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutCommunitiesInput
+  delete: Boolean
+  disconnect: Boolean
+  update: UserUpdateWithoutCommunitiesDataInput
+  upsert: UserUpsertWithoutCommunitiesInput
+}
+
 input UserUpdateOneWithoutPostsInput {
   connect: UserWhereUniqueInput
   create: UserCreateWithoutPostsInput
@@ -1147,7 +1284,19 @@ input UserUpdateOneWithoutPostsInput {
   upsert: UserUpsertWithoutPostsInput
 }
 
+input UserUpdateWithoutCommunitiesDataInput {
+  community: CommunityUpdateOneWithoutUsersInput
+  email: String
+  id: String
+  login: String
+  name: String
+  password: String
+  posts: PostUpdateManyWithoutAuthorInput
+  role: String
+}
+
 input UserUpdateWithoutCommunityDataInput {
+  communities: CommunityUpdateManyWithoutManagerInput
   email: String
   id: String
   login: String
@@ -1158,6 +1307,7 @@ input UserUpdateWithoutCommunityDataInput {
 }
 
 input UserUpdateWithoutPostsDataInput {
+  communities: CommunityUpdateManyWithoutManagerInput
   community: CommunityUpdateOneWithoutUsersInput
   email: String
   id: String
@@ -1170,6 +1320,11 @@ input UserUpdateWithoutPostsDataInput {
 input UserUpdateWithWhereUniqueWithoutCommunityInput {
   data: UserUpdateWithoutCommunityDataInput!
   where: UserWhereUniqueInput!
+}
+
+input UserUpsertWithoutCommunitiesInput {
+  create: UserCreateWithoutCommunitiesInput!
+  update: UserUpdateWithoutCommunitiesDataInput!
 }
 
 input UserUpsertWithoutPostsInput {
@@ -1185,6 +1340,7 @@ input UserUpsertWithWhereUniqueWithoutCommunityInput {
 
 input UserWhereInput {
   AND: [UserWhereInput!]
+  communities: CommunityFilter
   community: CommunityWhereInput
   email: NullableStringFilter
   id: StringFilter
