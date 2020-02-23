@@ -1,0 +1,17 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Resident",
+      "field": "passRecords",
+      "type": "PassRecord",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Resident",
+      "field": "passrecords"
+    }
+  ]
+}

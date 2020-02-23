@@ -424,7 +424,7 @@ input PassRecordCreateInput {
   date: DateTime!
   direction: Directions!
   id: String
-  resident: ResidentCreateOneWithoutPassrecordsInput!
+  resident: ResidentCreateOneWithoutPassRecordsInput!
 }
 
 input PassRecordCreateManyWithoutCommunityInput {
@@ -442,7 +442,7 @@ input PassRecordCreateWithoutCommunityInput {
   date: DateTime!
   direction: Directions!
   id: String
-  resident: ResidentCreateOneWithoutPassrecordsInput!
+  resident: ResidentCreateOneWithoutPassRecordsInput!
 }
 
 input PassRecordCreateWithoutResidentInput {
@@ -482,7 +482,7 @@ input PassRecordUpdateInput {
   date: DateTime
   direction: Directions
   id: String
-  resident: ResidentUpdateOneRequiredWithoutPassrecordsInput
+  resident: ResidentUpdateOneRequiredWithoutPassRecordsInput
 }
 
 input PassRecordUpdateManyDataInput {
@@ -533,7 +533,7 @@ input PassRecordUpdateWithoutCommunityDataInput {
   date: DateTime
   direction: Directions
   id: String
-  resident: ResidentUpdateOneRequiredWithoutPassrecordsInput
+  resident: ResidentUpdateOneRequiredWithoutPassRecordsInput
 }
 
 input PassRecordUpdateWithoutResidentDataInput {
@@ -747,6 +747,7 @@ type Resident {
   id: String!
   level: AwareLevels!
   name: String!
+  passRecords(after: PassRecordWhereUniqueInput, before: PassRecordWhereUniqueInput, first: Int, last: Int, orderBy: PassRecordOrderByInput, skip: Int, where: PassRecordWhereInput): [PassRecord!]!
   unit: Unit!
 }
 
@@ -756,7 +757,7 @@ input ResidentCreateInput {
   id: String!
   level: AwareLevels!
   name: String!
-  passrecords: PassRecordCreateManyWithoutResidentInput
+  passRecords: PassRecordCreateManyWithoutResidentInput
   unit: UnitCreateOneWithoutResidentsInput!
 }
 
@@ -770,9 +771,9 @@ input ResidentCreateManyWithoutUnitInput {
   create: [ResidentCreateWithoutUnitInput!]
 }
 
-input ResidentCreateOneWithoutPassrecordsInput {
+input ResidentCreateOneWithoutPassRecordsInput {
   connect: ResidentWhereUniqueInput
-  create: ResidentCreateWithoutPassrecordsInput
+  create: ResidentCreateWithoutPassRecordsInput
 }
 
 input ResidentCreateWithoutCommunityInput {
@@ -780,11 +781,11 @@ input ResidentCreateWithoutCommunityInput {
   id: String!
   level: AwareLevels!
   name: String!
-  passrecords: PassRecordCreateManyWithoutResidentInput
+  passRecords: PassRecordCreateManyWithoutResidentInput
   unit: UnitCreateOneWithoutResidentsInput!
 }
 
-input ResidentCreateWithoutPassrecordsInput {
+input ResidentCreateWithoutPassRecordsInput {
   age: String!
   community: CommunityCreateOneWithoutResidentsInput!
   id: String!
@@ -799,7 +800,7 @@ input ResidentCreateWithoutUnitInput {
   id: String!
   level: AwareLevels!
   name: String!
-  passrecords: PassRecordCreateManyWithoutResidentInput
+  passRecords: PassRecordCreateManyWithoutResidentInput
 }
 
 input ResidentFilter {
@@ -823,7 +824,7 @@ input ResidentScalarWhereInput {
   name: StringFilter
   NOT: [ResidentScalarWhereInput!]
   OR: [ResidentScalarWhereInput!]
-  passrecords: PassRecordFilter
+  passRecords: PassRecordFilter
 }
 
 input ResidentUpdateInput {
@@ -832,7 +833,7 @@ input ResidentUpdateInput {
   id: String
   level: AwareLevels
   name: String
-  passrecords: PassRecordUpdateManyWithoutResidentInput
+  passRecords: PassRecordUpdateManyWithoutResidentInput
   unit: UnitUpdateOneRequiredWithoutResidentsInput
 }
 
@@ -879,11 +880,11 @@ input ResidentUpdateManyWithWhereNestedInput {
   where: ResidentScalarWhereInput!
 }
 
-input ResidentUpdateOneRequiredWithoutPassrecordsInput {
+input ResidentUpdateOneRequiredWithoutPassRecordsInput {
   connect: ResidentWhereUniqueInput
-  create: ResidentCreateWithoutPassrecordsInput
-  update: ResidentUpdateWithoutPassrecordsDataInput
-  upsert: ResidentUpsertWithoutPassrecordsInput
+  create: ResidentCreateWithoutPassRecordsInput
+  update: ResidentUpdateWithoutPassRecordsDataInput
+  upsert: ResidentUpsertWithoutPassRecordsInput
 }
 
 input ResidentUpdateWithoutCommunityDataInput {
@@ -891,11 +892,11 @@ input ResidentUpdateWithoutCommunityDataInput {
   id: String
   level: AwareLevels
   name: String
-  passrecords: PassRecordUpdateManyWithoutResidentInput
+  passRecords: PassRecordUpdateManyWithoutResidentInput
   unit: UnitUpdateOneRequiredWithoutResidentsInput
 }
 
-input ResidentUpdateWithoutPassrecordsDataInput {
+input ResidentUpdateWithoutPassRecordsDataInput {
   age: String
   community: CommunityUpdateOneRequiredWithoutResidentsInput
   id: String
@@ -910,7 +911,7 @@ input ResidentUpdateWithoutUnitDataInput {
   id: String
   level: AwareLevels
   name: String
-  passrecords: PassRecordUpdateManyWithoutResidentInput
+  passRecords: PassRecordUpdateManyWithoutResidentInput
 }
 
 input ResidentUpdateWithWhereUniqueWithoutCommunityInput {
@@ -923,9 +924,9 @@ input ResidentUpdateWithWhereUniqueWithoutUnitInput {
   where: ResidentWhereUniqueInput!
 }
 
-input ResidentUpsertWithoutPassrecordsInput {
-  create: ResidentCreateWithoutPassrecordsInput!
-  update: ResidentUpdateWithoutPassrecordsDataInput!
+input ResidentUpsertWithoutPassRecordsInput {
+  create: ResidentCreateWithoutPassRecordsInput!
+  update: ResidentUpdateWithoutPassRecordsDataInput!
 }
 
 input ResidentUpsertWithWhereUniqueWithoutCommunityInput {
@@ -949,7 +950,7 @@ input ResidentWhereInput {
   name: StringFilter
   NOT: [ResidentWhereInput!]
   OR: [ResidentWhereInput!]
-  passrecords: PassRecordFilter
+  passRecords: PassRecordFilter
   unit: UnitWhereInput
 }
 
