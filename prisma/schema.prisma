@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = "postgres://face:1000+faces@stirad.com:8432/face"
+  url      = env("DATABASE_URL")
 }
 
 generator client {

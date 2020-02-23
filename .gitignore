@@ -2,3 +2,4 @@ node_modules
 static
 *.log
 *-lock.json
+.env
