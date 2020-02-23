@@ -9,6 +9,11 @@ export const Resident = objectType({
     t.model.name()
     t.model.community()
     t.model.unit()
+    t.model.passRecords({
+      pagination: true,
+      filtering: true,
+      ordering: true
+    })
   }
 })
 

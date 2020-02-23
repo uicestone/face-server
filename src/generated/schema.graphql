@@ -243,16 +243,19 @@ enum Directions {
 
 type Mutation {
   createOneCommunity(data: CommunityCreateInput!): Community!
+  createOnePassRecord(data: PassRecordCreateInput!): PassRecord!
   createOnePost(data: PostCreateInput!): Post!
   createOneResident(data: ResidentCreateInput!): Resident!
   createOneUnit(data: UnitCreateInput!): Unit!
   createOneUser(data: UserCreateInput!): User!
   deleteManyCommunity(where: CommunityWhereInput): BatchPayload!
+  deleteManyPassRecord(where: PassRecordWhereInput): BatchPayload!
   deleteManyPost(where: PostWhereInput): BatchPayload!
   deleteManyResident(where: ResidentWhereInput): BatchPayload!
   deleteManyUnit(where: UnitWhereInput): BatchPayload!
   deleteManyUser(where: UserWhereInput): BatchPayload!
   deleteOneCommunity(where: CommunityWhereUniqueInput!): Community
+  deleteOnePassRecord(where: PassRecordWhereUniqueInput!): PassRecord
   deleteOnePost(where: PostWhereUniqueInput!): Post
   deleteOneResident(where: ResidentWhereUniqueInput!): Resident
   deleteOneUnit(where: UnitWhereUniqueInput!): Unit
@@ -260,16 +263,19 @@ type Mutation {
   login(login: String!, password: String!): AuthPayload!
   signup(login: String!, name: String, password: String!): AuthPayload!
   updateManyCommunity(data: CommunityUpdateManyMutationInput!, where: CommunityWhereInput): BatchPayload!
+  updateManyPassRecord(data: PassRecordUpdateManyMutationInput!, where: PassRecordWhereInput): BatchPayload!
   updateManyPost(data: PostUpdateManyMutationInput!, where: PostWhereInput): BatchPayload!
   updateManyResident(data: ResidentUpdateManyMutationInput!, where: ResidentWhereInput): BatchPayload!
   updateManyUnit(data: UnitUpdateManyMutationInput!, where: UnitWhereInput): BatchPayload!
   updateManyUser(data: UserUpdateManyMutationInput!, where: UserWhereInput): BatchPayload!
   updateOneCommunity(data: CommunityUpdateInput!, where: CommunityWhereUniqueInput!): Community
+  updateOnePassRecord(data: PassRecordUpdateInput!, where: PassRecordWhereUniqueInput!): PassRecord
   updateOnePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
   updateOneResident(data: ResidentUpdateInput!, where: ResidentWhereUniqueInput!): Resident
   updateOneUnit(data: UnitUpdateInput!, where: UnitWhereUniqueInput!): Unit
   updateOneUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
   upsertOneCommunity(create: CommunityCreateInput!, update: CommunityUpdateInput!, where: CommunityWhereUniqueInput!): Community!
+  upsertOnePassRecord(create: PassRecordCreateInput!, update: PassRecordUpdateInput!, where: PassRecordWhereUniqueInput!): PassRecord!
   upsertOnePost(create: PostCreateInput!, update: PostUpdateInput!, where: PostWhereUniqueInput!): Post!
   upsertOneResident(create: ResidentCreateInput!, update: ResidentUpdateInput!, where: ResidentWhereUniqueInput!): Resident!
   upsertOneUnit(create: UnitCreateInput!, update: UnitUpdateInput!, where: UnitWhereUniqueInput!): Unit!
@@ -293,6 +299,24 @@ input NullableStringFilter {
 enum OrderByArg {
   asc
   desc
+}
+
+type PassRecord {
+  allow: Boolean!
+  community: Community!
+  date: DateTime!
+  direction: Directions!
+  id: String!
+  resident: Resident!
+}
+
+input PassRecordCreateInput {
+  allow: Boolean!
+  community: CommunityCreateOneWithoutPassRecordsInput!
+  date: DateTime!
+  direction: Directions!
+  id: String
+  resident: ResidentCreateOneWithoutPassRecordsInput!
 }
 
 input PassRecordCreateManyWithoutCommunityInput {
@@ -327,6 +351,13 @@ input PassRecordFilter {
   some: PassRecordWhereInput
 }
 
+input PassRecordOrderByInput {
+  allow: OrderByArg
+  date: OrderByArg
+  direction: OrderByArg
+  id: OrderByArg
+}
+
 input PassRecordScalarWhereInput {
   allow: BooleanFilter
   AND: [PassRecordScalarWhereInput!]
@@ -337,7 +368,23 @@ input PassRecordScalarWhereInput {
   OR: [PassRecordScalarWhereInput!]
 }
 
+input PassRecordUpdateInput {
+  allow: Boolean
+  community: CommunityUpdateOneRequiredWithoutPassRecordsInput
+  date: DateTime
+  direction: Directions
+  id: String
+  resident: ResidentUpdateOneRequiredWithoutPassRecordsInput
+}
+
 input PassRecordUpdateManyDataInput {
+  allow: Boolean
+  date: DateTime
+  direction: Directions
+  id: String
+}
+
+input PassRecordUpdateManyMutationInput {
   allow: Boolean
   date: DateTime
   direction: Directions
@@ -574,6 +621,8 @@ type Query {
   communities(after: CommunityWhereUniqueInput, before: CommunityWhereUniqueInput, first: Int, last: Int, orderBy: CommunityOrderByInput, skip: Int, where: CommunityWhereInput): [Community!]!
   community(where: CommunityWhereUniqueInput!): Community
   me: User!
+  passRecord(where: PassRecordWhereUniqueInput!): PassRecord
+  passRecords(after: PassRecordWhereUniqueInput, before: PassRecordWhereUniqueInput, first: Int, last: Int, orderBy: PassRecordOrderByInput, skip: Int, where: PassRecordWhereInput): [PassRecord!]!
   post(where: PostWhereUniqueInput!): Post
   posts(after: PostWhereUniqueInput, before: PostWhereUniqueInput, first: Int, last: Int, orderBy: PostOrderByInput, skip: Int, where: PostWhereInput): [Post!]!
   resident(where: ResidentWhereUniqueInput!): Resident
@@ -590,6 +639,7 @@ type Resident {
   id: String!
   level: AwareLevels!
   name: String!
+  passRecords(after: PassRecordWhereUniqueInput, before: PassRecordWhereUniqueInput, first: Int, last: Int, orderBy: PassRecordOrderByInput, skip: Int, where: PassRecordWhereInput): [PassRecord!]!
   unit: Unit!
 }
 
