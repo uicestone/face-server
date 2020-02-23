@@ -1,3 +1,4 @@
+require("dotenv").config({ path: "../prisma/.env" })
 import { GraphQLServer } from "graphql-yoga"
 import { permissions } from "./permissions"
 import { schema } from "./schema"
@@ -43,33 +44,50 @@ server.express
     }
   })
   .post("/tx/CreatePerson", async (req, res) => {
-    const { Image, Gender, PersonId = uuid.v4(), PersonName, PersonLevel, PersonAge, UnidId, CommunityId } = req.body
+    const { Image, Gender, PersonId = uuid.v4(), PersonName, PersonLevel, PersonAge, Building, Room, CommunityId } = req.body
     try {
       const result = await txIaiService.CreatePerson({ Image, Gender, PersonId, PersonName })
-      // const resident = await prisma.resident.upsert({
-      //   where: {
-      //     id: PersonId
-      //   },
-      //   update: {},
-      //   create: {
-      //     id: PersonId,
-      //     level: PersonLevel,
-      //     name: PersonName,
-      //     age: PersonAge,
-      //     unit: {
-      //       connect: UnidId
-      //     },
-      //     community: {
-      //       connect: CommunityId
-      //     }
-      //   }
-      // })
+      const [uint] = await prisma.unit.findMany({ where: { building: Building, room: Room, community: { id: CommunityId } } })
+      const resident = await prisma.resident.upsert({
+        where: {
+          id: result.SimilarPersonId || PersonId
+        },
+        update: {},
+        create: {
+          id: result.SimilarPersonId || PersonId,
+          level: PersonLevel,
+          name: PersonName,
+          age: PersonAge,
+          unit: uint
+            ? {
+                connect: {
+                  id: uint.id
+                }
+              }
+            : {
+                create: {
+                  building: Building,
+                  room: Room,
+                  community: {
+                    connect: {
+                      id: CommunityId
+                    }
+                  }
+                }
+              },
+          community: {
+            connect: {
+              id: CommunityId
+            }
+          }
+        }
+      })
       if (!result.SimilarPersonId) {
         const img = Image.split(",")[1]
         await fs.promises.writeFile(process.cwd() + `/static/${PersonId}.png`, img, { encoding: "base64" })
       }
 
-      res.json({ person: result })
+      res.json({ person: result, resident })
     } catch (error) {
       throw new Error(error)
     }
