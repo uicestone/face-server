@@ -4,3 +4,4 @@ static
 *-lock.json
 .env
 dist/
+.DS_Store
