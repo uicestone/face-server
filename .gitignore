@@ -3,3 +3,4 @@ static
 *.log
 *-lock.json
 .env
+dist/
