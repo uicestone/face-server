@@ -23,7 +23,7 @@ server.express
   })
   .use(bodyParser.json({ limit: "5mb" }))
 server.express
-  .post("/tx/SearchFaces", async (req, res) => {
+  .post("/api/tx/SearchFaces", async (req, res) => {
     const { Image } = req.body
     try {
       const result = await txIaiService.SearchPersons({ Image })
@@ -33,7 +33,7 @@ server.express
       throw new Error(error)
     }
   })
-  .post("/tx/SearchPersons", async (req, res) => {
+  .post("/api/tx/SearchPersons", async (req, res) => {
     const { Image } = req.body
     try {
       const result = await txIaiService.SearchPersons({ Image })
@@ -43,7 +43,7 @@ server.express
       throw new Error(error)
     }
   })
-  .post("/tx/CreatePerson", async (req, res) => {
+  .post("/api/tx/CreatePerson", async (req, res) => {
     const { Image, Gender, PersonId = uuid.v4(), PersonName, PersonLevel, PersonAge, Building, Room, CommunityId } = req.body
     try {
       const result = await txIaiService.CreatePerson({ Image, Gender, PersonId, PersonName })
@@ -94,4 +94,4 @@ server.express
   })
   .use("/static", express.static("static"))
 
-server.start({ tracing: false }, () => console.log(`🚀 Server ready at: http://localhost:4000\n`))
+server.start({ tracing: false, endpoint: "/graphql", playground: "/graphql" }, () => console.log(`🚀 Server ready at: http://localhost:4000/graphql\n`))
