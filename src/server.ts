@@ -94,4 +94,4 @@ server.express
   })
   .use("/static", express.static("static"))
 
-server.start({ tracing: false, endpoint: "/", playground: "/" }, () => console.log(`🚀 Server ready at: http://localhost:4000\n`))
+server.start({ tracing: false }, () => console.log(`🚀 Server ready at: http://localhost:4000\n`))
