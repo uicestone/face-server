@@ -8,6 +8,8 @@ const Credential = tx.common.Credential
 const ClientProfile = tx.common.ClientProfile
 const HttpProfile = tx.common.HttpProfile
 
+const faceGroupId = process.env.TX_FACE_GROUP_ID || "community-face"
+
 let cred = new Credential(config.txSecretID, config.txSecretKey)
 let httpProfile = new HttpProfile()
 httpProfile.endpoint = "iai.tencentcloudapi.com"
@@ -16,7 +18,7 @@ clientProfile.httpProfile = httpProfile
 let client = new IaiClient(cred, "ap-shanghai", clientProfile)
 
 export class TxIaiService {
-  async SearchPersons({ Image, GroupIds = ["test"], ...args }: { Image: string; GroupIds?: Array<string>; [key: string]: any }): Promise<any> {
+  async SearchPersons({ Image, GroupIds = [faceGroupId], ...args }: { Image: string; GroupIds?: Array<string>; [key: string]: any }): Promise<any> {
     const req = new models.SearchPersonsRequest()
     req.from_json_string(JSON.stringify({ Image: Image.split(",")[1], GroupIds, FaceMatchThreshold: 60, NeedPersonInfo: 1, ...args }))
     console.log(req)
@@ -28,7 +30,7 @@ export class TxIaiService {
       })
     })
   }
-  async SearchFaces({ Image, GroupIds = ["test"], ...args }: { Image: string; GroupIds?: Array<string>; [key: string]: any }) {
+  async SearchFaces({ Image, GroupIds = [faceGroupId], ...args }: { Image: string; GroupIds?: Array<string>; [key: string]: any }) {
     const req = new models.SearchFacesRequest()
     req.from_json_string(JSON.stringify({ Image: Image.split(",")[1], GroupIds, FaceMatchThreshold: 60, NeedPersonInfo: 1, ...args }))
 
@@ -40,7 +42,20 @@ export class TxIaiService {
     })
   }
 
-  async CreatePerson({ Image, PersonName, GroupId = "test", PersonId, Gender, ...args }: { Image: string; PersonName: string; PersonId: number; Gender: number; [key: string]: any }): Promise<any> {
+  async CreatePerson({
+    Image,
+    PersonName,
+    GroupId = faceGroupId,
+    PersonId,
+    Gender,
+    ...args
+  }: {
+    Image: string
+    PersonName: string
+    PersonId: number
+    Gender: number
+    [key: string]: any
+  }): Promise<any> {
     const req = new models.CreatePersonRequest()
     req.from_json_string(JSON.stringify({ Image: Image.split(",")[1], UniquePersonControl: 1, NeedPersonInfo: 1, PersonName, GroupId, PersonId, Gender, ...args }))
     console.log(req)
