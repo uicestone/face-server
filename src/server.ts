@@ -94,4 +94,4 @@ server.express
   })
   .use("/static", express.static("static"))
 
-server.start({ tracing: false }, () => console.log(`🚀 Server ready at: http://localhost:4000\n⭐️ See sample queries: http://pris.ly/e/ts/graphql-auth#5-using-the-graphql-api`))
+server.start({ tracing: false, endpoint: "/graphql", playground: "/graphql" }, () => console.log(`🚀 Server ready at: http://localhost:4000/graphql\n`))
