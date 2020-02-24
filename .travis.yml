@@ -11,5 +11,5 @@ after_success:
   - echo "${DEPLOY_KEY}" | base64 --decode > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
   - ssh-keyscan -H ${DEPLOY_HOST} >> ~/.ssh/known_hosts
-  - rsync -a -e ssh build/ ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}
+  - rsync -a -e ssh dist/ ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}
   - pm2 deploy production
