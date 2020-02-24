@@ -1,5 +1,7 @@
 {
-  "name": "graphql-auth",
+  "name": "face-server",
+  "description": "社区内控后端",
+  "version": "0.9.0",
   "license": "MIT",
   "scripts": {
     "start": "ts-node -T src/server",
