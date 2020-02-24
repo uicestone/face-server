@@ -6,7 +6,7 @@ node_js:
   - lts/*
 cache: yarn
 before_script: npm install -g pm2
-script: yarn build
+script: yarn generate && yarn build
 after_success:
   - echo "${DEPLOY_KEY}" | base64 --decode > ~/.ssh/id_rsa
   - chmod 600 ~/.ssh/id_rsa
