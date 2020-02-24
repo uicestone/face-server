@@ -43,6 +43,9 @@ export const userQuery = extendType({
             id: authPayload.userId
           }
         })
+        if (!user) {
+          throw new Error(`user ${authPayload.userId} not exists`)
+        }
         return user
       }
     })
