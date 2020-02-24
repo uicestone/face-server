@@ -27,7 +27,7 @@ type Community {
   address: String
   id: String!
   manager: User
-  name: String!
+  name: String
   phone: String
   residents(after: ResidentWhereUniqueInput, before: ResidentWhereUniqueInput, first: Int, last: Int, skip: Int): [Resident!]!
   units(after: UnitWhereUniqueInput, before: UnitWhereUniqueInput, first: Int, last: Int, skip: Int): [Unit!]!
@@ -38,7 +38,7 @@ input CommunityCreateInput {
   address: String
   id: String
   manager: UserCreateOneWithoutCommunitiesInput
-  name: String!
+  name: String
   passRecords: PassRecordCreateManyWithoutCommunityInput
   phone: String
   residents: ResidentCreateManyWithoutCommunityInput
@@ -74,7 +74,7 @@ input CommunityCreateOneWithoutUsersInput {
 input CommunityCreateWithoutManagerInput {
   address: String
   id: String
-  name: String!
+  name: String
   passRecords: PassRecordCreateManyWithoutCommunityInput
   phone: String
   residents: ResidentCreateManyWithoutCommunityInput
@@ -86,7 +86,7 @@ input CommunityCreateWithoutPassRecordsInput {
   address: String
   id: String
   manager: UserCreateOneWithoutCommunitiesInput
-  name: String!
+  name: String
   phone: String
   residents: ResidentCreateManyWithoutCommunityInput
   units: UnitCreateManyWithoutCommunityInput
@@ -97,7 +97,7 @@ input CommunityCreateWithoutResidentsInput {
   address: String
   id: String
   manager: UserCreateOneWithoutCommunitiesInput
-  name: String!
+  name: String
   passRecords: PassRecordCreateManyWithoutCommunityInput
   phone: String
   units: UnitCreateManyWithoutCommunityInput
@@ -108,7 +108,7 @@ input CommunityCreateWithoutUnitsInput {
   address: String
   id: String
   manager: UserCreateOneWithoutCommunitiesInput
-  name: String!
+  name: String
   passRecords: PassRecordCreateManyWithoutCommunityInput
   phone: String
   residents: ResidentCreateManyWithoutCommunityInput
@@ -119,7 +119,7 @@ input CommunityCreateWithoutUsersInput {
   address: String
   id: String
   manager: UserCreateOneWithoutCommunitiesInput
-  name: String!
+  name: String
   passRecords: PassRecordCreateManyWithoutCommunityInput
   phone: String
   residents: ResidentCreateManyWithoutCommunityInput
@@ -143,7 +143,7 @@ input CommunityScalarWhereInput {
   address: NullableStringFilter
   AND: [CommunityScalarWhereInput!]
   id: StringFilter
-  name: StringFilter
+  name: NullableStringFilter
   NOT: [CommunityScalarWhereInput!]
   OR: [CommunityScalarWhereInput!]
   passRecords: PassRecordFilter
@@ -317,7 +317,7 @@ input CommunityWhereInput {
   AND: [CommunityWhereInput!]
   id: StringFilter
   manager: UserWhereInput
-  name: StringFilter
+  name: NullableStringFilter
   NOT: [CommunityWhereInput!]
   OR: [CommunityWhereInput!]
   passRecords: PassRecordFilter
