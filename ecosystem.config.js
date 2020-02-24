@@ -3,7 +3,7 @@ module.exports = {
     name: "project-face",
     // script: "./node_modules/.bin/ts-node",
     // args: "src/server.ts",
-    script: "./dist/server",
+    script: "./dist/server.js",
     log_date_format: "YYYY-MM-DD HH:mm:ss.SSS (ZZ)",
     log: true,
     env: {
