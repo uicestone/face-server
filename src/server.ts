@@ -27,7 +27,6 @@ server.express
     const { Image } = req.body
     try {
       const result = await txIaiService.SearchPersons({ Image })
-      console.log(result)
       res.json(result)
     } catch (error) {
       throw new Error(error)
@@ -37,7 +36,6 @@ server.express
     const { Image } = req.body
     try {
       const result = await txIaiService.SearchPersons({ Image })
-      console.log(result)
       res.json(result)
     } catch (error) {
       throw new Error(error)
