@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = env("PRISMA_DB_URL")
+  url = "***"
 }
 
 generator client {
@@ -50,7 +50,7 @@ enum Directions {
 
 model Resident {
   id          String       @id
-  level       AwareLevels?
+  level       AwareLevels
   name        String?
   age         String?
   unit        Unit

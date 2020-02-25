@@ -42,9 +42,9 @@ server.express
     }
   })
   .post("/api/tx/CreatePerson", async (req, res) => {
-    const { Image, Gender, PersonId = uuid.v4(), PersonName, PersonLevel, PersonAge, Building, Room, CommunityId } = req.body
+    const { Image, PersonId = uuid.v4(), Building, Room, CommunityId } = req.body
     try {
-      const result = await txIaiService.CreatePerson({ Image, Gender, PersonId, PersonName })
+      const result = await txIaiService.CreatePerson({ Image, PersonId, PersonName: `${Building}-${Room}` })
       const [uint] = await prisma.unit.findMany({ where: { building: Building, room: Room, community: { id: CommunityId } } })
       const resident = await prisma.resident.upsert({
         where: {
@@ -53,9 +53,6 @@ server.express
         update: {},
         create: {
           id: result.SimilarPersonId || PersonId,
-          level: PersonLevel,
-          name: PersonName,
-          age: PersonAge,
           unit: uint
             ? {
                 connect: {

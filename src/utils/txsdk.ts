@@ -45,13 +45,13 @@ export class TxIaiService {
     PersonName,
     GroupId = faceGroupId,
     PersonId,
-    Gender,
+    Gender = 0,
     ...args
   }: {
     Image: string
     PersonName: string
     PersonId: number
-    Gender: number
+    Gender?: number
     [key: string]: any
   }): Promise<any> {
     const req = new models.CreatePersonRequest()

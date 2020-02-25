@@ -27,7 +27,7 @@ type Community {
   address: String
   id: String!
   manager: User
-  name: String!
+  name: String
   phone: String
   residents(after: ResidentWhereUniqueInput, before: ResidentWhereUniqueInput, first: Int, last: Int, skip: Int): [Resident!]!
   units(after: UnitWhereUniqueInput, before: UnitWhereUniqueInput, first: Int, last: Int, skip: Int): [Unit!]!
@@ -38,7 +38,7 @@ input CommunityCreateInput {
   address: String
   id: String
   manager: UserCreateOneWithoutCommunitiesInput
-  name: String!
+  name: String
   passRecords: PassRecordCreateManyWithoutCommunityInput
   phone: String
   residents: ResidentCreateManyWithoutCommunityInput
@@ -74,7 +74,7 @@ input CommunityCreateOneWithoutUsersInput {
 input CommunityCreateWithoutManagerInput {
   address: String
   id: String
-  name: String!
+  name: String
   passRecords: PassRecordCreateManyWithoutCommunityInput
   phone: String
   residents: ResidentCreateManyWithoutCommunityInput
@@ -86,7 +86,7 @@ input CommunityCreateWithoutPassRecordsInput {
   address: String
   id: String
   manager: UserCreateOneWithoutCommunitiesInput
-  name: String!
+  name: String
   phone: String
   residents: ResidentCreateManyWithoutCommunityInput
   units: UnitCreateManyWithoutCommunityInput
@@ -97,7 +97,7 @@ input CommunityCreateWithoutResidentsInput {
   address: String
   id: String
   manager: UserCreateOneWithoutCommunitiesInput
-  name: String!
+  name: String
   passRecords: PassRecordCreateManyWithoutCommunityInput
   phone: String
   units: UnitCreateManyWithoutCommunityInput
@@ -108,7 +108,7 @@ input CommunityCreateWithoutUnitsInput {
   address: String
   id: String
   manager: UserCreateOneWithoutCommunitiesInput
-  name: String!
+  name: String
   passRecords: PassRecordCreateManyWithoutCommunityInput
   phone: String
   residents: ResidentCreateManyWithoutCommunityInput
@@ -119,7 +119,7 @@ input CommunityCreateWithoutUsersInput {
   address: String
   id: String
   manager: UserCreateOneWithoutCommunitiesInput
-  name: String!
+  name: String
   passRecords: PassRecordCreateManyWithoutCommunityInput
   phone: String
   residents: ResidentCreateManyWithoutCommunityInput
@@ -143,7 +143,7 @@ input CommunityScalarWhereInput {
   address: NullableStringFilter
   AND: [CommunityScalarWhereInput!]
   id: StringFilter
-  name: StringFilter
+  name: NullableStringFilter
   NOT: [CommunityScalarWhereInput!]
   OR: [CommunityScalarWhereInput!]
   passRecords: PassRecordFilter
@@ -317,7 +317,7 @@ input CommunityWhereInput {
   AND: [CommunityWhereInput!]
   id: StringFilter
   manager: UserWhereInput
-  name: StringFilter
+  name: NullableStringFilter
   NOT: [CommunityWhereInput!]
   OR: [CommunityWhereInput!]
   passRecords: PassRecordFilter
@@ -742,21 +742,21 @@ type Query {
 }
 
 type Resident {
-  age: String!
+  age: String
   community: Community!
   id: String!
-  level: AwareLevels!
-  name: String!
+  level: AwareLevels
+  name: String
   passRecords(after: PassRecordWhereUniqueInput, before: PassRecordWhereUniqueInput, first: Int, last: Int, orderBy: PassRecordOrderByInput, skip: Int, where: PassRecordWhereInput): [PassRecord!]!
   unit: Unit!
 }
 
 input ResidentCreateInput {
-  age: String!
+  age: String
   community: CommunityCreateOneWithoutResidentsInput!
   id: String!
-  level: AwareLevels!
-  name: String!
+  level: AwareLevels
+  name: String
   passRecords: PassRecordCreateManyWithoutResidentInput
   unit: UnitCreateOneWithoutResidentsInput!
 }
@@ -777,29 +777,29 @@ input ResidentCreateOneWithoutPassRecordsInput {
 }
 
 input ResidentCreateWithoutCommunityInput {
-  age: String!
+  age: String
   id: String!
-  level: AwareLevels!
-  name: String!
+  level: AwareLevels
+  name: String
   passRecords: PassRecordCreateManyWithoutResidentInput
   unit: UnitCreateOneWithoutResidentsInput!
 }
 
 input ResidentCreateWithoutPassRecordsInput {
-  age: String!
+  age: String
   community: CommunityCreateOneWithoutResidentsInput!
   id: String!
-  level: AwareLevels!
-  name: String!
+  level: AwareLevels
+  name: String
   unit: UnitCreateOneWithoutResidentsInput!
 }
 
 input ResidentCreateWithoutUnitInput {
-  age: String!
+  age: String
   community: CommunityCreateOneWithoutResidentsInput!
   id: String!
-  level: AwareLevels!
-  name: String!
+  level: AwareLevels
+  name: String
   passRecords: PassRecordCreateManyWithoutResidentInput
 }
 
@@ -817,11 +817,11 @@ input ResidentOrderByInput {
 }
 
 input ResidentScalarWhereInput {
-  age: StringFilter
+  age: NullableStringFilter
   AND: [ResidentScalarWhereInput!]
   id: StringFilter
   level: AwareLevels
-  name: StringFilter
+  name: NullableStringFilter
   NOT: [ResidentScalarWhereInput!]
   OR: [ResidentScalarWhereInput!]
   passRecords: PassRecordFilter
@@ -942,12 +942,12 @@ input ResidentUpsertWithWhereUniqueWithoutUnitInput {
 }
 
 input ResidentWhereInput {
-  age: StringFilter
+  age: NullableStringFilter
   AND: [ResidentWhereInput!]
   community: CommunityWhereInput
   id: StringFilter
   level: AwareLevels
-  name: StringFilter
+  name: NullableStringFilter
   NOT: [ResidentWhereInput!]
   OR: [ResidentWhereInput!]
   passRecords: PassRecordFilter
@@ -976,6 +976,7 @@ type Unit {
   building: String!
   community: Community!
   id: String!
+  level: String
   residents(after: ResidentWhereUniqueInput, before: ResidentWhereUniqueInput, first: Int, last: Int, skip: Int): [Resident!]!
   room: String!
 }
@@ -984,6 +985,7 @@ input UnitCreateInput {
   building: String!
   community: CommunityCreateOneWithoutUnitsInput!
   id: String
+  level: String
   residents: ResidentCreateManyWithoutUnitInput
   room: String!
 }
@@ -1001,6 +1003,7 @@ input UnitCreateOneWithoutResidentsInput {
 input UnitCreateWithoutCommunityInput {
   building: String!
   id: String
+  level: String
   residents: ResidentCreateManyWithoutUnitInput
   room: String!
 }
@@ -1009,6 +1012,7 @@ input UnitCreateWithoutResidentsInput {
   building: String!
   community: CommunityCreateOneWithoutUnitsInput!
   id: String
+  level: String
   room: String!
 }
 
@@ -1021,6 +1025,7 @@ input UnitFilter {
 input UnitOrderByInput {
   building: OrderByArg
   id: OrderByArg
+  level: OrderByArg
   room: OrderByArg
 }
 
@@ -1028,6 +1033,7 @@ input UnitScalarWhereInput {
   AND: [UnitScalarWhereInput!]
   building: StringFilter
   id: StringFilter
+  level: NullableStringFilter
   NOT: [UnitScalarWhereInput!]
   OR: [UnitScalarWhereInput!]
   residents: ResidentFilter
@@ -1038,6 +1044,7 @@ input UnitUpdateInput {
   building: String
   community: CommunityUpdateOneRequiredWithoutUnitsInput
   id: String
+  level: String
   residents: ResidentUpdateManyWithoutUnitInput
   room: String
 }
@@ -1045,12 +1052,14 @@ input UnitUpdateInput {
 input UnitUpdateManyDataInput {
   building: String
   id: String
+  level: String
   room: String
 }
 
 input UnitUpdateManyMutationInput {
   building: String
   id: String
+  level: String
   room: String
 }
 
@@ -1081,6 +1090,7 @@ input UnitUpdateOneRequiredWithoutResidentsInput {
 input UnitUpdateWithoutCommunityDataInput {
   building: String
   id: String
+  level: String
   residents: ResidentUpdateManyWithoutUnitInput
   room: String
 }
@@ -1089,6 +1099,7 @@ input UnitUpdateWithoutResidentsDataInput {
   building: String
   community: CommunityUpdateOneRequiredWithoutUnitsInput
   id: String
+  level: String
   room: String
 }
 
@@ -1113,6 +1124,7 @@ input UnitWhereInput {
   building: StringFilter
   community: CommunityWhereInput
   id: StringFilter
+  level: NullableStringFilter
   NOT: [UnitWhereInput!]
   OR: [UnitWhereInput!]
   residents: ResidentFilter

@@ -1,0 +1,24 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "Resident",
+      "field": "name",
+      "arity": "Optional"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Resident",
+      "field": "age",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Unit",
+      "field": "level",
+      "type": "String",
+      "arity": "Optional"
+    }
+  ]
+}
