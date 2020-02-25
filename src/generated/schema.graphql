@@ -421,7 +421,7 @@ type PassRecord {
 input PassRecordCreateInput {
   allow: Boolean!
   community: CommunityCreateOneWithoutPassRecordsInput!
-  date: DateTime!
+  date: DateTime
   direction: Directions!
   id: String
   resident: ResidentCreateOneWithoutPassRecordsInput!
@@ -439,7 +439,7 @@ input PassRecordCreateManyWithoutResidentInput {
 
 input PassRecordCreateWithoutCommunityInput {
   allow: Boolean!
-  date: DateTime!
+  date: DateTime
   direction: Directions!
   id: String
   resident: ResidentCreateOneWithoutPassRecordsInput!
@@ -448,7 +448,7 @@ input PassRecordCreateWithoutCommunityInput {
 input PassRecordCreateWithoutResidentInput {
   allow: Boolean!
   community: CommunityCreateOneWithoutPassRecordsInput!
-  date: DateTime!
+  date: DateTime
   direction: Directions!
   id: String
 }

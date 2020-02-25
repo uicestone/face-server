@@ -311,7 +311,7 @@ export interface NexusGenInputs {
   PassRecordCreateInput: { // input type
     allow: boolean; // Boolean!
     community: NexusGenInputs['CommunityCreateOneWithoutPassRecordsInput']; // CommunityCreateOneWithoutPassRecordsInput!
-    date: any; // DateTime!
+    date?: any | null; // DateTime
     direction: NexusGenEnums['Directions']; // Directions!
     id?: string | null; // String
     resident: NexusGenInputs['ResidentCreateOneWithoutPassRecordsInput']; // ResidentCreateOneWithoutPassRecordsInput!
@@ -326,7 +326,7 @@ export interface NexusGenInputs {
   }
   PassRecordCreateWithoutCommunityInput: { // input type
     allow: boolean; // Boolean!
-    date: any; // DateTime!
+    date?: any | null; // DateTime
     direction: NexusGenEnums['Directions']; // Directions!
     id?: string | null; // String
     resident: NexusGenInputs['ResidentCreateOneWithoutPassRecordsInput']; // ResidentCreateOneWithoutPassRecordsInput!
@@ -334,7 +334,7 @@ export interface NexusGenInputs {
   PassRecordCreateWithoutResidentInput: { // input type
     allow: boolean; // Boolean!
     community: NexusGenInputs['CommunityCreateOneWithoutPassRecordsInput']; // CommunityCreateOneWithoutPassRecordsInput!
-    date: any; // DateTime!
+    date?: any | null; // DateTime
     direction: NexusGenEnums['Directions']; // Directions!
     id?: string | null; // String
   }
