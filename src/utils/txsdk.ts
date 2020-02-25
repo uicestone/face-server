@@ -21,8 +21,6 @@ export class TxIaiService {
   async SearchPersons({ Image, GroupIds = [faceGroupId], ...args }: { Image: string; GroupIds?: Array<string>; [key: string]: any }): Promise<any> {
     const req = new models.SearchPersonsRequest()
     req.from_json_string(JSON.stringify({ Image: Image.split(",")[1], GroupIds, FaceMatchThreshold: 60, NeedPersonInfo: 1, ...args }))
-    console.log(req)
-
     return new Promise((res, rej) => {
       client.SearchPersons(req, (err, response) => {
         if (err) return rej(err)
@@ -58,7 +56,6 @@ export class TxIaiService {
   }): Promise<any> {
     const req = new models.CreatePersonRequest()
     req.from_json_string(JSON.stringify({ Image: Image.split(",")[1], UniquePersonControl: 1, NeedPersonInfo: 1, PersonName, GroupId, PersonId, Gender, ...args }))
-    console.log(req)
     return new Promise((res, rej) => {
       client.CreatePerson(req, (err, response) => {
         if (err) return rej(err)
