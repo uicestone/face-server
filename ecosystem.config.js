@@ -17,7 +17,7 @@ module.exports = {
       ref: "origin/master",
       repo: "git@github.com:uu-z/project-face-server.git",
       path: "/var/www/face-server",
-      "post-deploy": "yarn && pm2 startOrRestart ecosystem.config.js"
+      "post-deploy": "yarn && yarn migrate:up && yarn generate && pm2 startOrRestart ecosystem.config.js"
     }
   }
 }
